@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kyawt.schooldb">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".subject.SubjectDetailActivity"></activity>
+        <activity android:name=".subject.AddSubjectActivity" />
+        <activity android:name=".course.CourseDetailActivity" />
+        <activity android:name=".course.AddCourseActivity" />
+        <activity android:name=".registration.AddRegistrationActivity" />
+        <activity android:name=".student.StudentListActivity" />
+        <activity android:name=".parent.ParentListActivity" />
+        <activity android:name=".teacher.TeacherListActivity" />
+        <activity android:name=".subject.SubjectListActivity" />
+        <activity android:name=".course.CourseListActivity" />
+        <activity android:name=".registration.RegistrationListActivity" />
+        <activity android:name=".bottomnav.SettingActivity" />
+        <activity android:name=".bottomnav.MyAccountActivity" />
+        <activity android:name=".bottomnav.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+    </application>
+
+</manifest>
