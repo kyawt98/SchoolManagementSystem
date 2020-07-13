@@ -8,6 +8,8 @@ import androidx.room.Room;
 
 import com.kyawt.schooldb.helper.AppDatabase;
 import com.kyawt.schooldb.model.CourseModel;
+import com.kyawt.schooldb.model.ParentModel;
+import com.kyawt.schooldb.model.RegisterModel;
 import com.kyawt.schooldb.model.SubjectModel;
 
 import java.util.List;
@@ -154,6 +156,58 @@ public class AppDatabaseUtility {
     }
 //    ....................Delete data task end......................
 //    =================================== Subject END =============================================
+//    =================================== Parent START =============================================
+    //    ....................Insert task start........................
+
+    public void insertParentTask(final ParentModel parent){
+
+        new AsyncTask<Void, Void, Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.parentDAO().insertTask(parent);
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                Toast.makeText(context,parent.parent_name+" is added.", Toast.LENGTH_LONG).show();
+            }
+        }.execute();
+
+    }
+//    ....................Insert task end..........................
+//    =================================== Parent END =============================================
+
+//    =================================== Register START =============================================
+    //    ....................Insert task start........................
+
+    public void insertRegisterTask(final RegisterModel register){
+
+        new AsyncTask<Void, Void, Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.registerDAO().insertTask(register);
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                Toast.makeText(context,"Register ID "+register.register_id+" is added.", Toast.LENGTH_LONG).show();
+            }
+        }.execute();
+
+    }
+//    ....................Insert task end..........................
+
+    //    =================================== Register END =============================================
+
+
 
 
 }

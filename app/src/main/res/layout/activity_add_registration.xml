@@ -17,6 +17,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+
+            <EditText
+                android:id="@+id/etDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginTop="32dp"
+                android:hint="Register Date"
+                android:inputType="date"
+                android:textSize="14sp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="-35dp" />
+
             <TextView
                 android:id="@+id/labelStudentInfo"
                 android:layout_width="wrap_content"
@@ -30,19 +44,8 @@
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/etDate" />
 
-            <EditText
-                android:id="@+id/etDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:layout_marginTop="32dp"
-                android:hint="Register Date"
-                android:inputType="date"
-                android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@id/labelStudentInfo"
-                tools:layout_editor_absoluteX="-35dp" />
 
             <EditText
                 android:id="@+id/etStudentName"
@@ -52,7 +55,7 @@
                 android:layout_margin="16dp"
                 android:textSize="14sp"
                 android:spinnerMode="dropdown"
-                app:layout_constraintTop_toBottomOf="@id/etDate" />
+                app:layout_constraintTop_toBottomOf="@id/labelStudentInfo" />
 
             <RadioGroup
                 android:id="@+id/radioGender"
@@ -86,7 +89,7 @@
             </RadioGroup>
 
             <EditText
-                android:id="@+id/etNrc"
+                android:id="@+id/etStudentNrc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -95,16 +98,14 @@
                 app:layout_constraintTop_toBottomOf="@id/radioGender" />
 
             <EditText
-                android:id="@+id/etBirthday"
+                android:id="@+id/etStudentBirthday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:textSize="14sp"
                 android:hint="Birthday "
                 android:inputType="date"
-                app:layout_constraintTop_toBottomOf="@id/etNrc" />
-
-
+                app:layout_constraintTop_toBottomOf="@id/etStudentNrc" />
 
             <TextView
                 android:id="@+id/labelParentInfo"
@@ -120,7 +121,7 @@
                 app:layout_constraintHorizontal_bias="0.469"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etBirthday" />
+                app:layout_constraintTop_toBottomOf="@id/etStudentBirthday" />
 
             <EditText
                 android:id="@+id/etParentName"
@@ -188,7 +189,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="Class Information"
+                android:text="Course Information"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/colorAccent"
@@ -209,14 +210,25 @@
 
 
             <EditText
-                android:id="@+id/etStartDate"
+                android:id="@+id/etClassFees"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:textSize="14sp"
-                android:hint="Start Date"
-                android:inputType="date"
+                android:hint="Course Fees"
+                android:inputType="number"
                 app:layout_constraintTop_toBottomOf="@id/spinCourse" />
+
+
+            <EditText
+                android:id="@+id/etDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textSize="14sp"
+                android:hint="Duration"
+                android:inputType="number"
+                app:layout_constraintTop_toBottomOf="@id/etClassFees" />
 
             <Button
                 android:id="@+id/btnAdd"
@@ -228,7 +240,7 @@
                 android:text="Save"
                 android:textColor="#FFFFFF"
                 android:textAllCaps="false"
-                app:layout_constraintTop_toBottomOf="@id/etStartDate"
+                app:layout_constraintTop_toBottomOf="@id/etDuration"
                 tools:ignore="MissingConstraints" />
 
             <Button

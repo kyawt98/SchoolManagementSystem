@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".subject.SubjectDetailActivity"></activity>
+        <activity android:name=".parent.AddParentActivity"></activity>
+        <activity android:name=".subject.SubjectDetailActivity" />
         <activity android:name=".subject.AddSubjectActivity" />
         <activity android:name=".course.CourseDetailActivity" />
         <activity android:name=".course.AddCourseActivity" />

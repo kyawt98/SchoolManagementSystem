@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.kyawt.schooldb.R;
 import com.kyawt.schooldb.course.CourseDetailActivity;
 import com.kyawt.schooldb.model.CourseModel;
+import com.kyawt.schooldb.registration.AddRegistrationActivity;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -63,6 +64,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
                 intent.putExtra("key_for_course_code", course_code);
                 intent.putExtra("key_for_course_name", course_name);
                 context.startActivity(intent);
+
+
             }
         });
     }
