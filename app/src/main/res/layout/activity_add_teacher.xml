@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".teacher.AddTeacherActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/labelTeacherInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="Teacher Information"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorAccent"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/breakline"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/line"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/labelTeacherInfo" />
+
+            <EditText
+                android:id="@+id/etTeacherName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:hint="Teacher Name"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/breakline" />
+
+            <RadioGroup
+                android:id="@+id/rgroup_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/etTeacherName">
+
+                <RadioButton
+                    android:id="@+id/rdbtn_teacher_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:textSize="16sp"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/rdbtn_teacher_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:textSize="16sp"/>
+            </RadioGroup>
+
+
+            <EditText
+                android:id="@+id/etTeacherNrc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:hint="NRC No "
+                android:textSize="14sp"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@id/rgroup_gender" />
+
+            <EditText
+                android:id="@+id/etTeacherBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:hint="Birthday "
+                android:inputType="date"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/etTeacherNrc" />
+
+
+            <EditText
+                android:id="@+id/etTeacherAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:hint="Address"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/etTeacherBirthday" />
+
+            <EditText
+                android:id="@+id/etTeacherPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:hint="Phone No"
+                android:inputType="number"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/etTeacherAddress" />
+
+            <EditText
+                android:id="@+id/etTeacherEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/etTeacherPhone"/>
+
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/btn_submit_background"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/etTeacherEmail"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/btn_cancel_background"
+                android:text="Cancel"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnAdd" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</ScrollView>

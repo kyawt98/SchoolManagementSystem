@@ -11,6 +11,7 @@ import com.kyawt.schooldb.model.CourseModel;
 import com.kyawt.schooldb.model.ParentModel;
 import com.kyawt.schooldb.model.RegisterModel;
 import com.kyawt.schooldb.model.SubjectModel;
+import com.kyawt.schooldb.model.TeacherModel;
 
 import java.util.List;
 
@@ -207,6 +208,69 @@ public class AppDatabaseUtility {
 
     //    =================================== Register END =============================================
 
+    //    =================================== Teacher START =============================================
+
+    //    ....................Insert task start........................
+
+    public void insertTeacherTask(final TeacherModel teacher){
+
+        new AsyncTask<Void, Void, Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.teacherDAO().insertTask(teacher);
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                Toast.makeText(context,"Teacher Name "+teacher.teacher_name+" is added.", Toast.LENGTH_LONG).show();
+            }
+        }.execute();
+
+    }
+//    ....................Insert task end..........................
+
+    //    ....................Get data task start......................
+
+    public List<TeacherModel> getTeacher(){
+        List<TeacherModel> teacherModelList= appDatabase.teacherDAO().getAllTeachers();
+        return teacherModelList;
+    }
+//    ....................Get data task end......................
+
+    //    ....................Update data for course task start....................
+
+    public void updateTeacherTask(final TeacherModel teacher){
+        new AsyncTask<Void,Void,Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.teacherDAO().updateTask(teacher);
+                return null;
+            }
+        }.execute();
+    }
+//    ....................Update data for course task end......................
+
+
+//    ....................Delete data for course task start......................
+
+    public void deleteTeacherTask(final TeacherModel teacher){
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.teacherDAO().deleteTask(teacher);
+                return null;
+            }
+        }.execute();
+    }
+//    ....................Delete data task end......................
+
+    //    =================================== Teacher END =============================================
 
 
 
