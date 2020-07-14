@@ -95,11 +95,14 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
             @Override
             public void onClick(View v) {
 
+                int teacher_id =  teacherModelArrayList.get(position).teacher_id;
                 String teacher_name = teacherModelArrayList.get(position).teacher_name;
                 String teacher_ph = teacherModelArrayList.get(position).teacher_ph;
                 String teacher_gender = teacherModelArrayList.get(position).teacher_gender;
 
                 Intent intent= new Intent(context, TeacherDetailActivity.class);
+
+                intent.putExtra("key_for_teacher_id", teacher_id);
                 intent.putExtra("key_for_teacher_name", teacher_name);
                 intent.putExtra("key_for_teacher_ph", teacher_ph);
                 intent.putExtra("key_for_teacher_gender", teacher_gender);
@@ -120,7 +123,6 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
     //    ................ViewHolder start..............................
 
     public static class TeacherViewHolder extends RecyclerView.ViewHolder{
-        TextView txt_teacher_id;
         TextView txt_teacher_name;
         TextView txt_teacher_ph;
         ImageView img_gender;

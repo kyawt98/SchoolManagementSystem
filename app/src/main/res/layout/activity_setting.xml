@@ -2,8 +2,66 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAccent"
     tools:context=".bottomnav.SettingActivity">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="1dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/home"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="#00FFFFFF"
+                android:paddingBottom="@dimen/cardview_default_radius"
+                android:text="Home"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/myaccount" />
+
+            <Button
+                android:id="@+id/myaccount"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="#00FFFFFF"
+                android:paddingBottom="@dimen/cardview_default_radius"
+                android:text="My Account"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintLeft_toRightOf="@id/home"
+                app:layout_constraintRight_toLeftOf="@id/setting" />
+
+            <Button
+                android:id="@+id/setting"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="#00FFFFFF"
+                android:paddingBottom="@dimen/cardview_default_radius"
+                android:text="Setting"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintLeft_toRightOf="@id/myaccount"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+

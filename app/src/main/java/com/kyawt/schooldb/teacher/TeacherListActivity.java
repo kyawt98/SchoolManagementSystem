@@ -9,7 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.kyawt.schooldb.R;
@@ -24,10 +28,12 @@ import com.kyawt.schooldb.utility.AppDatabaseUtility;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class TeacherListActivity extends AppCompatActivity {
 
     CardView btn_back;
+    EditText et_search;
     FloatingActionButton fabAddNewTeacher;
 
     private static RecyclerView.Adapter adapter;
@@ -35,7 +41,7 @@ public class TeacherListActivity extends AppCompatActivity {
     private static  RecyclerView recyclerView;
     private TeacherAdapter teacherAdapter;
 
-    ArrayList<TeacherModel> teacherModelArrayList;
+    ArrayList<TeacherModel> teacherModelArrayList,teacherSearchList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,31 @@ public class TeacherListActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+
+//       ----------------search-----------------
+
+        et_search = (EditText) findViewById(R.id.et_search);
+
+        et_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String text = s.toString();
+                Search(text);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+//       ----------------search-----------------
 
         action();
         new LoadDataTask().execute();
@@ -95,9 +126,12 @@ public class TeacherListActivity extends AppCompatActivity {
 
             teacherModelList = appDatabaseUtility.getTeacher();
             teacherModelArrayList = new ArrayList<>();
+            teacherSearchList = new ArrayList<>();
+
 
             for (int i=0; i<teacherModelList.size(); i++){
                 teacherModelArrayList.add(teacherModelList.get(i));
+                teacherSearchList.add(teacherModelList.get(i));
             }
             return null;
         }
@@ -111,6 +145,30 @@ public class TeacherListActivity extends AppCompatActivity {
         }
 
     }
+
+    //........... Filter start...........................
+    public void Search(String txtSearch){
+
+        txtSearch = txtSearch.toLowerCase(Locale.getDefault());
+        Log.d("Filter", txtSearch+"");
+        teacherModelArrayList.clear();
+        if (txtSearch.length() == 0){
+            teacherModelArrayList.addAll(teacherSearchList);
+            Log.d("Load Data", "All");
+        }else {
+            Log.d("Load", "Filtered");
+
+            for (TeacherModel teacherModel:teacherSearchList){
+                if (teacherModel.teacher_name.toLowerCase(Locale.getDefault()).contains(txtSearch)
+                        || teacherModel.teacher_email.toLowerCase(Locale.getDefault()).contains(txtSearch)){
+                    teacherModelArrayList.add(teacherModel);
+                }
+            }
+        }
+
+        teacherAdapter.notifyDataSetChanged();
+    }
+    //........... Filter end...........................
 
     @Override
     protected void onRestart() {

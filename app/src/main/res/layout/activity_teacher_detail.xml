@@ -126,7 +126,7 @@ tools:context=".teacher.TeacherDetailActivity">
             app:layout_constraintTop_toBottomOf="@id/etTeacherPhoneDetail"/>
 
         <Button
-            android:id="@+id/btnUpdate"
+            android:id="@+id/btnTeacherUpdate"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_margin="16dp"
@@ -152,7 +152,7 @@ tools:context=".teacher.TeacherDetailActivity">
             android:textColor="#FFFFFF"
             android:textSize="14sp"
             tools:ignore="MissingConstraints"
-            app:layout_constraintLeft_toRightOf="@id/btnUpdate"
+            app:layout_constraintLeft_toRightOf="@id/btnTeacherUpdate"
             app:layout_constraintRight_toLeftOf="@id/btnCancel"
             app:layout_constraintTop_toBottomOf="@id/etTeacherEmailDetail" />
 

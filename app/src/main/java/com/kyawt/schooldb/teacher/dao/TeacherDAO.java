@@ -21,6 +21,10 @@ public interface TeacherDAO {
     @Delete
     void deleteTask(TeacherModel teacherModel);
 
+    @Query("DELETE FROM teachermodel WHERE teacher_id = :tId")
+    void deleteTeacher(int tId);
+
+
     @Query("SELECT * FROM teachermodel ORDER BY teacher_id asc")
     List<TeacherModel> getAllTeachers();
 }

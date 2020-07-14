@@ -1,7 +1,9 @@
 package com.kyawt.schooldb.teacher;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +24,7 @@ public class TeacherDetailActivity extends AppCompatActivity {
     Button btn_update, btn_delete, btn_cancel;
     EditText et_teacher_name, et_teacher_ph, et_teacher_email, et_teacher_dob, et_teacher_address, et_teacher_nrc;
     RadioButton rdbtn_male, rdbtn_female;
+    int teacher_id=0;
     String teacher_name="", teacher_ph="", teacher_email="", teacher_dob="", teacher_address="", teacher_nrc="", teacher_gender="";
     String teacher_name_to_update="", teacher_ph_to_update="",teacher_email_to_update="",teacher_dob_to_update="",teacher_address_to_update="", teacher_nrc_to_update="",teacher_gender_to_update="";
     String teacher_name_to_delete="", teacher_ph_to_delete="",teacher_email_to_delete="",teacher_dob_to_delete="",teacher_address_to_delete="", teacher_nrc_to_delete="",teacher_gender_to_delete="";
@@ -41,13 +44,14 @@ public class TeacherDetailActivity extends AppCompatActivity {
         rdbtn_female = (RadioButton) findViewById(R.id.rdbtn_teacher_female_detail);
         rdbtn_male = (RadioButton) findViewById(R.id.rdbtn_teacher_male_detail);
 
-        btn_update = (Button) findViewById(R.id.btnUpdate);
+        btn_update = (Button) findViewById(R.id.btnTeacherUpdate);
         btn_delete = (Button) findViewById(R.id.btnDelete);
         btn_cancel = (Button) findViewById(R.id.btnCancel);
 
         //        ----------- pass data from course adapter by intent start-------------
         Bundle data = getIntent().getExtras();
         if (data != null){
+            teacher_id = data.getInt("key_for_teacher_id");
             teacher_name = data.getString("key_for_teacher_name");
             teacher_ph = data.getString("key_for_teacher_ph");
             teacher_email = data.getString("key_for_teacher_email");
@@ -113,17 +117,27 @@ public class TeacherDetailActivity extends AppCompatActivity {
             }
         });
 
-//
-//        btn_delete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                course_code_to_delete = et_course_code.getText().toString().trim();
-//                course_name_to_delete = et_course_name.getText().toString().trim();
-//
-//                CourseModel courseModel = new CourseModel(Integer.parseInt(course_code_to_delete), course_name_to_delete);
-//                delete_dialog(courseModel);
-//            }
-//        });
+
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               teacher_name_to_delete = et_teacher_name.getText().toString().trim();
+                teacher_nrc_to_delete = et_teacher_nrc.getText().toString().trim();
+                teacher_dob_to_delete = et_teacher_dob.getText().toString().trim();
+                teacher_address_to_delete = et_teacher_address.getText().toString().trim();
+                teacher_ph_to_delete = et_teacher_ph.getText().toString().trim();
+                teacher_email_to_delete = et_teacher_email.getText().toString().trim();
+
+                if (rdbtn_female.isChecked()){
+                    teacher_gender_to_delete = "Female";
+                }else if (rdbtn_male.isChecked()){
+                    teacher_gender_to_delete = "Male";
+                }
+
+                TeacherModel teacherModel = new TeacherModel(teacher_name_to_delete,teacher_nrc_to_delete,teacher_dob_to_delete,teacher_address_to_delete,teacher_ph_to_delete,teacher_email_to_delete,teacher_gender_to_delete);
+                delete_dialog(teacherModel);
+            }
+        });
 
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,4 +147,36 @@ public class TeacherDetailActivity extends AppCompatActivity {
             }
         });
     }
+
+    //    ............... Delete data start ................
+
+    public void delete_dialog(final TeacherModel teacher){
+        final TeacherModel teacher_about_to_delete = teacher;
+
+        AlertDialog.Builder builder= new AlertDialog.Builder(TeacherDetailActivity.this);
+        builder.setTitle("WARNING");
+        builder.setMessage("Are you sure to delete?");
+        builder.setIcon(R.drawable.ic__remove);
+        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                AppDatabaseUtility appDatabaseUtility = new AppDatabaseUtility(getApplicationContext());
+                appDatabaseUtility.deleteTeacherTask(teacher_about_to_delete);
+                Toast.makeText(getApplicationContext(), teacher.teacher_name+" is deleted.", Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+//    ............... Delete data end ................
 }
