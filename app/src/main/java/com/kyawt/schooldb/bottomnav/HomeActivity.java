@@ -5,8 +5,12 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kyawt.schooldb.R;
 import com.kyawt.schooldb.course.CourseListActivity;
@@ -20,6 +24,8 @@ public class HomeActivity extends AppCompatActivity {
 
     CardView card_register, card_student, card_teacher, card_class, card_subject, card_parent;
     Button btn_home, btn_myaccount, btn_setting;
+    TextView txt_app_name;
+    String app_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +41,21 @@ public class HomeActivity extends AppCompatActivity {
         btn_home = (Button) findViewById(R.id.home);
         btn_myaccount = (Button) findViewById(R.id.myaccount);
         btn_setting = (Button) findViewById(R.id.setting);
+        txt_app_name = (TextView) findViewById(R.id.txt_app_name);
+
+        //        ----------- pass data from start-------------
+        Bundle data = getIntent().getExtras();
+        if (data != null){
+            app_name = data.getString("key_for_app_name");
+            Log.d("App name", app_name);
+        }
+//        ----------- pass data end----------------
+
+        //        ------------set data to UI start-------------------------------------
+
+        txt_app_name.setText(app_name+"");
+
+//        ------------set data to UI end ---------------------------------------
 
         CardMenus();
         nav_bottoms();

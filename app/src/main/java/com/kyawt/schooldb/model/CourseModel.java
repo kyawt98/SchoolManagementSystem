@@ -17,4 +17,12 @@ public class CourseModel {
         this.class_code = class_code;
         this.class_name = class_name;
     }
+
+    public String getClass_name() {
+        return class_name;
+    }
+
+    public void setClass_name(String class_name) {
+        this.class_name = class_name;
+    }
 }

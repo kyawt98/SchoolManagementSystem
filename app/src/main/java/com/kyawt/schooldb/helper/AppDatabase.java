@@ -14,7 +14,7 @@ import com.kyawt.schooldb.registration.dao.RegisterDAO;
 import com.kyawt.schooldb.subject.dao.SubjectDAO;
 import com.kyawt.schooldb.teacher.dao.TeacherDAO;
 
-@Database(entities = {CourseModel.class, SubjectModel.class, ParentModel.class, RegisterModel.class, TeacherModel.class}, version = 5, exportSchema = false)
+@Database(entities = {CourseModel.class, SubjectModel.class, ParentModel.class, RegisterModel.class, TeacherModel.class}, version = 7, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract CourseDAO courseDAO();
     public abstract SubjectDAO subjectDAO();

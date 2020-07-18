@@ -42,96 +42,24 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardTitle"
+    <EditText
+        android:id="@+id/et_search"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        app:cardBackgroundColor="#0A5A53"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="2dp"
-        app:cardUseCompatPadding="true"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginTop="44dp"
+        android:hint="Search by student name or phone no"
+        android:padding="10dp"
+        android:textSize="14sp"
         app:layout_constraintTop_toBottomOf="@id/card_appName"
-        tools:ignore="MissingConstraints">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/txtRegisterID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="Profile"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/txtStudentName"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/txtStudentName"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="Name"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/txtRegisterID"
-                app:layout_constraintRight_toLeftOf="@id/txtClassName"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/txtClassName"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="Class"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@id/txtStudentName"
-                app:layout_constraintLeft_toRightOf="@id/txtStudentName"
-                app:layout_constraintRight_toLeftOf="@id/btnDetail"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/btnDetail"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="#00FFFFFF"
-                android:textAllCaps="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/txtClassName"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+        tools:layout_editor_absoluteX="0dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_registration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardTitle" />
-
-    <TextView
-        android:id="@+id/txtError"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Registration Data Not Found!"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ProgressBar
-        android:id="@+id/Loading"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/et_search" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

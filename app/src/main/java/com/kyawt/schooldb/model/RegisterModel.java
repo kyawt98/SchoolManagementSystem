@@ -46,8 +46,7 @@ public class RegisterModel {
     @ColumnInfo(name = "Course_duration")
     public int course_duration;
 
-    public RegisterModel(int register_id, String register_date, String student_name, String student_nrc, String student_bd, String father_name, String father_nrc, String father_ph, String student_address, String student_email, String course_name, int course_fees, int course_duration) {
-        this.register_id = register_id;
+    public RegisterModel(String register_date, String student_name, String student_nrc, String student_bd, String father_name, String father_nrc, String father_ph, String student_address, String student_email, String course_name, int course_fees, int course_duration) {
         this.register_date = register_date;
         this.student_name = student_name;
         this.student_nrc = student_nrc;

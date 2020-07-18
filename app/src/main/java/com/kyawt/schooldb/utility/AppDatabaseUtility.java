@@ -199,12 +199,20 @@ public class AppDatabaseUtility {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                Toast.makeText(context,"Register ID "+register.register_id+" is added.", Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"Registered student "+register.student_name+" is added.", Toast.LENGTH_LONG).show();
             }
         }.execute();
 
     }
 //    ....................Insert task end..........................
+
+    //    ....................Get data task start......................
+
+    public List<RegisterModel> getRegister(){
+        List<RegisterModel> registerModelList= appDatabase.registerDAO().getAllRegisters();
+        return registerModelList;
+    }
+//    ....................Get data task end......................
 
     //    =================================== Register END =============================================
 
