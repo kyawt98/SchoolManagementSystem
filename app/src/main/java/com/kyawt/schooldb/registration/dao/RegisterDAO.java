@@ -24,4 +24,5 @@ public interface RegisterDAO {
 
     @Query("SELECT * FROM registermodel ORDER BY register_id asc")
     List<RegisterModel> getAllRegisters();
+
 }

@@ -82,21 +82,40 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.Regist
         }else{
             img_call.setVisibility(View.GONE);
         }
-//
-//        ll_item_layout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String student_name = registerModelArrayList.get(position).student_name;
-//                String course_name = registerModelArrayList.get(position).course_name;
-//                String student_ph = registerModelArrayList.get(position).father_ph;
-//
-//                Intent intent= new Intent(context, RegisterDetailActivity.class);
-//                intent.putExtra("key_for_course_code", course_code);
-//                intent.putExtra("key_for_course_name", course_name);
-//                context.startActivity(intent);
-//
-//            }
-//        });
+
+        ll_item_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String student_name = registerModelArrayList.get(position).student_name;
+                String course_name = registerModelArrayList.get(position).course_name;
+                String register_date = registerModelArrayList.get(position).register_date;
+                String student_nrc = registerModelArrayList.get(position).student_nrc;
+                String student_dob = registerModelArrayList.get(position).student_bd;
+                String father_name = registerModelArrayList.get(position).father_name;
+                String father_nrc = registerModelArrayList.get(position).father_nrc;
+                String father_ph = registerModelArrayList.get(position).father_ph;
+                String address = registerModelArrayList.get(position).student_address;
+                String email = registerModelArrayList.get(position).student_email;
+                int course_fees = registerModelArrayList.get(position).course_fees;
+                int course_duration = registerModelArrayList.get(position).course_duration;
+
+                Intent intent= new Intent(context, RegisterDetailActivity.class);
+                intent.putExtra("key_for_student_name", student_name);
+                intent.putExtra("key_for_course_name", course_name);
+                intent.putExtra("key_for_register_date", register_date);
+                intent.putExtra("key_for_student_nrc", student_nrc);
+                intent.putExtra("key_for_student_dob", student_dob);
+                intent.putExtra("key_for_father_name", father_name);
+                intent.putExtra("key_for_father_nrc", father_nrc);
+                intent.putExtra("key_for_father_ph", father_ph);
+                intent.putExtra("key_for_address", address);
+                intent.putExtra("key_for_email", email);
+                intent.putExtra("key_for_course_fees", course_fees);
+                intent.putExtra("key_for_course_duration", course_duration);
+                context.startActivity(intent);
+
+            }
+        });
     }
 
     @Override

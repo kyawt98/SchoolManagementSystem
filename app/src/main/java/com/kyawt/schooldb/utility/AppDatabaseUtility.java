@@ -62,6 +62,12 @@ public class AppDatabaseUtility {
         List<CourseModel> courseModelList= appDatabase.courseDAO().getAllCourses();
         return courseModelList;
     }
+
+    public List<CourseModel> getCourseID() {
+        int c_id=0;
+        List<CourseModel> courseModelList = appDatabase.courseDAO().getClassById( c_id);
+        return courseModelList;
+    }
 //    ....................Get data for course task end......................
 
     //    ....................Update data for course task start....................
@@ -211,8 +217,37 @@ public class AppDatabaseUtility {
     public List<RegisterModel> getRegister(){
         List<RegisterModel> registerModelList= appDatabase.registerDAO().getAllRegisters();
         return registerModelList;
+
     }
 //    ....................Get data task end......................
+
+    //    ....................Update data task start....................
+
+    public void updateRegisterTask(final RegisterModel register){
+        new AsyncTask<Void,Void,Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.registerDAO().updateTask(register);
+                return null;
+            }
+        }.execute();
+    }
+//    ....................Update data task end......................
+
+    //    ....................Delete data start......................
+
+    public void deleteRegisterTask(final RegisterModel register){
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.registerDAO().deleteTask(register);
+                return null;
+            }
+        }.execute();
+    }
+//    ....................Delete data task end......................
 
     //    =================================== Register END =============================================
 
@@ -261,10 +296,10 @@ public class AppDatabaseUtility {
             }
         }.execute();
     }
-//    ....................Update data for course task end......................
+//    ....................Update data  end......................
 
 
-//    ....................Delete data for course task start......................
+//    ....................Delete data start......................
 
     public void deleteTeacherTask(final TeacherModel teacher){
         new AsyncTask<Void, Void, Void>() {
