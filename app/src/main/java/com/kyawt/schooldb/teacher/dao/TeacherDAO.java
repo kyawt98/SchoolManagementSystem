@@ -24,6 +24,8 @@ public interface TeacherDAO {
     @Query("DELETE FROM teachermodel WHERE teacher_id = :tId")
     void deleteTeacher(int tId);
 
+    @Query("UPDATE teachermodel SET Teacher_name = :teacher_name, Teacher_gender = :teacher_gender, Teacher_nrc = :teacher_nrc, Teacher_birthday = :teacher_birthday, Teacher_address = :teacher_address, Teacher_phone = :teacher_phone, Teacher_email = :teacher_email WHERE teacher_id = :teacher_id")
+    void updateTeacherByID(String teacher_name, String teacher_gender, String teacher_nrc, String teacher_birthday, String teacher_address, String teacher_phone, String teacher_email, int teacher_id);
 
     @Query("SELECT * FROM teachermodel ORDER BY teacher_id asc")
     List<TeacherModel> getAllTeachers();

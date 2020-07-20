@@ -21,6 +21,7 @@ import com.kyawt.schooldb.R;
 import com.kyawt.schooldb.course.CourseDetailActivity;
 import com.kyawt.schooldb.model.CourseModel;
 import com.kyawt.schooldb.model.RegisterModel;
+import com.kyawt.schooldb.parent.ParentListActivity;
 import com.kyawt.schooldb.registration.RegisterDetailActivity;
 
 import java.util.ArrayList;
@@ -98,8 +99,10 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.Regist
                 String email = registerModelArrayList.get(position).student_email;
                 int course_fees = registerModelArrayList.get(position).course_fees;
                 int course_duration = registerModelArrayList.get(position).course_duration;
+                int register_id = registerModelArrayList.get(position).register_id;
 
                 Intent intent= new Intent(context, RegisterDetailActivity.class);
+                intent.putExtra("register_id", register_id);
                 intent.putExtra("key_for_student_name", student_name);
                 intent.putExtra("key_for_course_name", course_name);
                 intent.putExtra("key_for_register_date", register_date);

@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ import com.kyawt.schooldb.course.CourseListActivity;
 import com.kyawt.schooldb.course.adapter.CourseAdapter;
 import com.kyawt.schooldb.course.dao.CourseDAO;
 import com.kyawt.schooldb.model.CourseModel;
+import com.kyawt.schooldb.model.ParentModel;
 import com.kyawt.schooldb.model.RegisterModel;
 import com.kyawt.schooldb.registration.dao.RegisterDAO;
 import com.kyawt.schooldb.utility.AppDatabaseUtility;
@@ -36,7 +38,8 @@ public class AddRegistrationActivity extends AppCompatActivity {
     Spinner sp_course_name;
 
     String register_id,register_date, stu_name, stu_nrc, stu_bd, father_name, father_nrc, father_ph, address, email,course_name,course_fees, course_duration;
-
+    String father_dob="", father_email ="";
+    String father_gender="";
 
    ArrayList<String> courseNameList;
    ArrayAdapter<String> courseNameArrayAdapter;
@@ -121,6 +124,9 @@ public class AddRegistrationActivity extends AppCompatActivity {
                     AppDatabaseUtility appDatabaseUtility = new AppDatabaseUtility(getApplicationContext());
                     RegisterModel registerModel = new RegisterModel(register_date, stu_name, stu_nrc, stu_bd, father_name, father_nrc, father_ph, address,email, course_name, Integer.parseInt(course_fees), Integer.parseInt(course_duration) );
                     appDatabaseUtility.insertRegisterTask(registerModel);
+
+                    ParentModel parentModel = new ParentModel(father_name, father_dob,father_gender, father_ph,father_nrc,father_email,address);
+                    appDatabaseUtility.insertParentTask(parentModel);
 
                     et_register_date.setText("");
                     et_stu_name.setText("");

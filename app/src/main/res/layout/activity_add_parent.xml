@@ -42,28 +42,6 @@ tools:context=".parent.AddParentActivity">
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/labelParentInfo" />
 
-        <TextView
-            android:id="@+id/txtParentID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ID :"
-            android:textSize="16sp"
-            app:layout_constraintHorizontal_bias="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/breakline" />
-
-        <EditText
-            android:id="@+id/etParentID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:hint="Parent ID"
-            android:textSize="14sp"
-            app:layout_constraintBaseline_toBaselineOf="@id/txtParentID"
-            app:layout_constraintLeft_toRightOf="@id/txtParentID"
-            app:layout_constraintTop_toBottomOf="@id/labelParentInfo" />
-
         <EditText
             android:id="@+id/etParentName"
             android:layout_width="match_parent"
@@ -72,7 +50,7 @@ tools:context=".parent.AddParentActivity">
             android:inputType="text"
             android:hint="Parent Name"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/txtParentID" />
+            app:layout_constraintTop_toBottomOf="@id/breakline" />
 
         <TextView
             android:id="@+id/gender"

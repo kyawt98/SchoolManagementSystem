@@ -108,7 +108,7 @@ public class TeacherDetailActivity extends AppCompatActivity {
 
                     AppDatabaseUtility appDatabaseUtility = new AppDatabaseUtility(getApplicationContext());
                     TeacherModel teacherModel = new TeacherModel(teacher_name_to_update,teacher_gender_to_update,teacher_nrc_to_update,teacher_dob_to_update, teacher_address_to_update, teacher_ph_to_update, teacher_email_to_update);
-                    appDatabaseUtility.updateTeacherTask(teacherModel);
+                    appDatabaseUtility.updateTeacherTask(teacher_name_to_update,teacher_gender_to_update,teacher_nrc_to_update,teacher_dob_to_update, teacher_address_to_update, teacher_ph_to_update, teacher_email_to_update, teacher_id);
 
                     Intent intent = new Intent(TeacherDetailActivity.this, TeacherListActivity.class);
                     startActivity(intent);
@@ -135,7 +135,7 @@ public class TeacherDetailActivity extends AppCompatActivity {
                 }
 
                 TeacherModel teacherModel = new TeacherModel(teacher_name_to_delete,teacher_nrc_to_delete,teacher_dob_to_delete,teacher_address_to_delete,teacher_ph_to_delete,teacher_email_to_delete,teacher_gender_to_delete);
-                delete_dialog(teacherModel);
+                delete_dialog(teacher_id);
             }
         });
 
@@ -150,8 +150,8 @@ public class TeacherDetailActivity extends AppCompatActivity {
 
     //    ............... Delete data start ................
 
-    public void delete_dialog(final TeacherModel teacher){
-        final TeacherModel teacher_about_to_delete = teacher;
+    public void delete_dialog(int teacher_id){
+        final int teacher_about_to_delete = teacher_id;
 
         AlertDialog.Builder builder= new AlertDialog.Builder(TeacherDetailActivity.this);
         builder.setTitle("WARNING");
@@ -162,7 +162,7 @@ public class TeacherDetailActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 AppDatabaseUtility appDatabaseUtility = new AppDatabaseUtility(getApplicationContext());
                 appDatabaseUtility.deleteTeacherTask(teacher_about_to_delete);
-                Toast.makeText(getApplicationContext(), teacher.teacher_name+" is deleted.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), teacher_name+" is deleted.", Toast.LENGTH_LONG).show();
                 finish();
             }
         });

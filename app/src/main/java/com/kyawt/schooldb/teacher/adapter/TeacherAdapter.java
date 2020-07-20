@@ -30,8 +30,7 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
     private ArrayList<TeacherModel> teacherModelArrayList;
     Context context;
 
-
-    public TeacherAdapter(ArrayList<TeacherModel> teacherModelArrayList, Context context){
+    public TeacherAdapter(ArrayList<TeacherModel> teacherModelArrayList, Context context) {
         this.context = context;
         this.teacherModelArrayList = teacherModelArrayList;
     }
@@ -40,7 +39,7 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
     @NonNull
     @Override
     public TeacherViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_teacher,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_teacher, parent, false);
         TeacherViewHolder teacherViewHolder = new TeacherViewHolder(view);
         return teacherViewHolder;
     }
@@ -57,27 +56,27 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
         LinearLayout ll_item_layout = holder.ll_item_layout;
 
 //        txt_teacher_id.setText(teacherModelArrayList.get(position).teacher_id);
-        txt_teacher_name.setText(teacherModelArrayList.get(position).teacher_name+" ");
-        txt_teacher_ph.setText(teacherModelArrayList.get(position).teacher_ph+" ");
+        txt_teacher_name.setText(teacherModelArrayList.get(position).teacher_name + " ");
+        txt_teacher_ph.setText(teacherModelArrayList.get(position).teacher_ph + " ");
 
-        if (teacherModelArrayList.get(position).teacher_gender.equalsIgnoreCase("male")){
+        if (teacherModelArrayList.get(position).teacher_gender.equalsIgnoreCase("male")) {
             img_gender.setImageResource(R.drawable.ic_male);
-        }else if (teacherModelArrayList.get(position).teacher_gender.equalsIgnoreCase("female")){
+        } else if (teacherModelArrayList.get(position).teacher_gender.equalsIgnoreCase("female")) {
             img_gender.setImageResource(R.drawable.ic_female);
         }
 
 //        ................. Logic Title Start.......................
 
-        btn_title.setText(teacherModelArrayList.get(position).teacher_name.toUpperCase().charAt(0)+"");
+        btn_title.setText(teacherModelArrayList.get(position).teacher_name.toUpperCase().charAt(0) + "");
 //        ................. Random color......................
         Random random = new Random();
         int red = random.nextInt(255);
-        final int green =  random.nextInt(255);
+        final int green = random.nextInt(255);
         int blue = random.nextInt(255);
 
-        btn_title.setBackgroundColor(Color.rgb(red,green,blue));
+        btn_title.setBackgroundColor(Color.rgb(red, green, blue));
 
-        if (teacherModelArrayList.get(position).teacher_ph.length() <12) {
+        if (teacherModelArrayList.get(position).teacher_ph.length() < 12) {
 
             img_call.setVisibility(View.VISIBLE);
             img_call.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +86,7 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
                     context.startActivity(intent);
                 }
             });
-        }else{
+        } else {
             img_call.setVisibility(View.GONE);
         }
 
@@ -95,12 +94,12 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
             @Override
             public void onClick(View v) {
 
-                int teacher_id =  teacherModelArrayList.get(position).teacher_id;
+                int teacher_id = teacherModelArrayList.get(position).teacher_id;
                 String teacher_name = teacherModelArrayList.get(position).teacher_name;
                 String teacher_ph = teacherModelArrayList.get(position).teacher_ph;
                 String teacher_gender = teacherModelArrayList.get(position).teacher_gender;
 
-                Intent intent= new Intent(context, TeacherDetailActivity.class);
+                Intent intent = new Intent(context, TeacherDetailActivity.class);
 
                 intent.putExtra("key_for_teacher_id", teacher_id);
                 intent.putExtra("key_for_teacher_name", teacher_name);
@@ -122,7 +121,7 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
 
     //    ................ViewHolder start..............................
 
-    public static class TeacherViewHolder extends RecyclerView.ViewHolder{
+    public static class TeacherViewHolder extends RecyclerView.ViewHolder {
         TextView txt_teacher_name;
         TextView txt_teacher_ph;
         ImageView img_gender;
@@ -130,7 +129,7 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
         Button btn_title;
         LinearLayout ll_item_layout;
 
-        public TeacherViewHolder(View itemView){
+        public TeacherViewHolder(View itemView) {
             super(itemView);
 //            this.txt_teacher_id = (TextView) itemView.findViewById(R.id.txt_teacher_id_item);
             this.txt_teacher_name = (TextView) itemView.findViewById(R.id.txt_teacher_name_item);

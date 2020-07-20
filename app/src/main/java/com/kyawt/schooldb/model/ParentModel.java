@@ -31,8 +31,7 @@ public class ParentModel {
     @ColumnInfo(name = "Parent_email")
     public String parent_email;
 
-    public ParentModel(int parent_id, String parent_name, String parent_gender, String parent_nrc, String parent_birthday, String parent_address, String parent_ph, String parent_email) {
-        this.parent_id = parent_id;
+    public ParentModel(String parent_name, String parent_gender, String parent_nrc, String parent_birthday, String parent_address, String parent_ph, String parent_email) {
         this.parent_name = parent_name;
         this.parent_gender = parent_gender;
         this.parent_nrc = parent_nrc;

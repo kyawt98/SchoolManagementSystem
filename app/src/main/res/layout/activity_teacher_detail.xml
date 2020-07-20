@@ -121,7 +121,7 @@ tools:context=".teacher.TeacherDetailActivity">
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:hint="Email"
-            android:inputType="number"
+            android:inputType="textEmailAddress"
             android:textSize="14sp"
             app:layout_constraintTop_toBottomOf="@id/etTeacherPhoneDetail"/>
 

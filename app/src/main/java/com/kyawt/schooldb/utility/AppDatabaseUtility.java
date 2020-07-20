@@ -186,6 +186,7 @@ public class AppDatabaseUtility {
 
     }
 //    ....................Insert task end..........................
+
 //    =================================== Parent END =============================================
 
 //    =================================== Register START =============================================
@@ -233,16 +234,27 @@ public class AppDatabaseUtility {
             }
         }.execute();
     }
+
+    public void updateRegisterByID(final String register_date, final String student_name, final String student_nrc, final String student_dob, final String father_name, final String father_nrc, final String father_ph, final String address, final String email, final String course_name, final int course_fees, final int course_duration, final int register_id){
+        new AsyncTask<Void,Void,Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.registerDAO().updateRegisterByID(register_date,student_name,student_nrc,student_dob,father_name,father_nrc,father_ph,address,email,course_name,course_fees,course_duration,register_id);
+                return null;
+            }
+        }.execute();
+    }
 //    ....................Update data task end......................
 
     //    ....................Delete data start......................
 
-    public void deleteRegisterTask(final RegisterModel register){
+    public void deleteRegisterTask(final int register_id){
         new AsyncTask<Void, Void, Void>() {
 
             @Override
             protected Void doInBackground(Void... voids) {
-                appDatabase.registerDAO().deleteTask(register);
+                appDatabase.registerDAO().deleteRegisterByID(register_id);
                 return null;
             }
         }.execute();
@@ -286,12 +298,12 @@ public class AppDatabaseUtility {
 
     //    ....................Update data for course task start....................
 
-    public void updateTeacherTask(final TeacherModel teacher){
+    public void updateTeacherTask(final String teacher_name, final String teacher_gender, final String teacher_nrc, final String teacher_birthday, final String teacher_address, final String teacher_phone, final String teacher_email, final int teacher_id){
         new AsyncTask<Void,Void,Void>(){
 
             @Override
             protected Void doInBackground(Void... voids) {
-                appDatabase.teacherDAO().updateTask(teacher);
+                appDatabase.teacherDAO().updateTeacherByID(teacher_name, teacher_gender,teacher_nrc,teacher_birthday,teacher_address,teacher_phone,teacher_email,teacher_id);
                 return null;
             }
         }.execute();
@@ -301,12 +313,12 @@ public class AppDatabaseUtility {
 
 //    ....................Delete data start......................
 
-    public void deleteTeacherTask(final TeacherModel teacher){
+    public void deleteTeacherTask(final int teacher_id){
         new AsyncTask<Void, Void, Void>() {
 
             @Override
             protected Void doInBackground(Void... voids) {
-                appDatabase.teacherDAO().deleteTask(teacher);
+                appDatabase.teacherDAO().deleteTeacher(teacher_id);
                 return null;
             }
         }.execute();
