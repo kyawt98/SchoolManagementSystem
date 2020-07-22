@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".registration.RegisterDetailActivity"></activity>
+        <activity android:name=".student.StudentDetailActivity"></activity>
+        <activity android:name=".student.AddStudentActivity" />
+        <activity android:name=".registration.RegisterDetailActivity" />
         <activity android:name=".teacher.TeacherDetailActivity" />
         <activity android:name=".teacher.AddTeacherActivity" />
         <activity android:name=".parent.AddParentActivity" />

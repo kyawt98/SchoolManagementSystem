@@ -2,6 +2,7 @@ package com.kyawt.schooldb.registration;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import com.kyawt.schooldb.model.CourseModel;
 import com.kyawt.schooldb.model.ParentModel;
 import com.kyawt.schooldb.model.RegisterModel;
 import com.kyawt.schooldb.registration.dao.RegisterDAO;
+import com.kyawt.schooldb.student.AddStudentActivity;
 import com.kyawt.schooldb.utility.AppDatabaseUtility;
 
 import java.util.ArrayList;
@@ -45,6 +47,7 @@ public class AddRegistrationActivity extends AppCompatActivity {
    ArrayAdapter<String> courseNameArrayAdapter;
    private AppDatabaseUtility appDatabaseUtility;
    List<CourseModel> courseModelList;
+   Context context;
 
 
     @Override

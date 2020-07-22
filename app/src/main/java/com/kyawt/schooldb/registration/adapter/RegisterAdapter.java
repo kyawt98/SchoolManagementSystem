@@ -23,6 +23,7 @@ import com.kyawt.schooldb.model.CourseModel;
 import com.kyawt.schooldb.model.RegisterModel;
 import com.kyawt.schooldb.parent.ParentListActivity;
 import com.kyawt.schooldb.registration.RegisterDetailActivity;
+import com.kyawt.schooldb.student.AddStudentActivity;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -57,7 +58,6 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.Regist
         LinearLayout ll_item_layout = holder.ll_item_layout;
 
         txt_student_name.setText(registerModelArrayList.get(position).student_name+" ");
-        txt_course_name.setText(registerModelArrayList.get(position).course_name+" ");
         txt_student_ph.setText(registerModelArrayList.get(position).father_ph);
 
         //        ................. Random color......................
@@ -76,8 +76,24 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.Regist
             img_call.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + registerModelArrayList.get(position).father_ph));
+                    String student_name = registerModelArrayList.get(position).student_name;
+                    String student_nrc = registerModelArrayList.get(position).student_nrc;
+                    String student_dob = registerModelArrayList.get(position).student_bd;
+                    String address = registerModelArrayList.get(position).student_address;
+                    String email = registerModelArrayList.get(position).student_email;
+                    String father_ph = registerModelArrayList.get(position).father_ph;
+
+
+                    Intent intent= new Intent(context, AddStudentActivity.class);
+                    intent.putExtra("key_for_student_name", student_name);
+                    intent.putExtra("key_for_student_nrc", student_nrc);
+                    intent.putExtra("key_for_student_dob", student_dob);
+                    intent.putExtra("key_for_email", email);
+                    intent.putExtra("key_for_address", address);
+                    intent.putExtra("key_for_father_ph", father_ph);
+
                     context.startActivity(intent);
+
                 }
             });
         }else{
@@ -135,7 +151,6 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.Regist
        public RegisterViewHolder(View itemView){
            super(itemView);
            this.txt_student_name = (TextView) itemView.findViewById(R.id.txt_student_name_item);
-           this.txt_course_name = (TextView) itemView.findViewById(R.id.txt_course_name);
            this.ll_item_layout = (LinearLayout) itemView.findViewById(R.id.ll_item_layout);
            this.txt_student_ph = (TextView) itemView.findViewById(R.id.txt_student_ph_item);
            this.img_call = (ImageView) itemView.findViewById(R.id.img_call_item);

@@ -10,6 +10,7 @@ import com.kyawt.schooldb.helper.AppDatabase;
 import com.kyawt.schooldb.model.CourseModel;
 import com.kyawt.schooldb.model.ParentModel;
 import com.kyawt.schooldb.model.RegisterModel;
+import com.kyawt.schooldb.model.StudentModel;
 import com.kyawt.schooldb.model.SubjectModel;
 import com.kyawt.schooldb.model.TeacherModel;
 
@@ -206,7 +207,7 @@ public class AppDatabaseUtility {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                Toast.makeText(context,"Registered student "+register.student_name+" is added.", Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"Registered student "+register.father_name+" is added.", Toast.LENGTH_LONG).show();
             }
         }.execute();
 
@@ -224,16 +225,6 @@ public class AppDatabaseUtility {
 
     //    ....................Update data task start....................
 
-    public void updateRegisterTask(final RegisterModel register){
-        new AsyncTask<Void,Void,Void>(){
-
-            @Override
-            protected Void doInBackground(Void... voids) {
-                appDatabase.registerDAO().updateTask(register);
-                return null;
-            }
-        }.execute();
-    }
 
     public void updateRegisterByID(final String register_date, final String student_name, final String student_nrc, final String student_dob, final String father_name, final String father_nrc, final String father_ph, final String address, final String email, final String course_name, final int course_fees, final int course_duration, final int register_id){
         new AsyncTask<Void,Void,Void>(){
@@ -296,7 +287,7 @@ public class AppDatabaseUtility {
     }
 //    ....................Get data task end......................
 
-    //    ....................Update data for course task start....................
+    //    ....................Update data task start....................
 
     public void updateTeacherTask(final String teacher_name, final String teacher_gender, final String teacher_nrc, final String teacher_birthday, final String teacher_address, final String teacher_phone, final String teacher_email, final int teacher_id){
         new AsyncTask<Void,Void,Void>(){
@@ -326,6 +317,68 @@ public class AppDatabaseUtility {
 //    ....................Delete data task end......................
 
     //    =================================== Teacher END =============================================
+
+//    ======================================= Student START ============================================
+    //    ....................Insert task start........................
+
+    public void insertStudentTask(final StudentModel student){
+
+        new AsyncTask<Void, Void, Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.studentDAO().insertTask(student);
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                Toast.makeText(context,student.student_name+" is added.", Toast.LENGTH_LONG).show();
+            }
+        }.execute();
+
+    }
+//    ....................Insert task end..........................
+
+    //    ....................Get data task start......................
+
+    public List<StudentModel> getStudent(){
+        List<StudentModel> studentModelList= appDatabase.studentDAO().getAllStudent();
+        return studentModelList;
+    }
+//    ....................Get data task end......................
+
+    //    ....................Update data for course task start....................
+
+    public void updateStudentTask(final String student_name, final String student_gender, final String student_nrc, final String student_birthday, final String student_address, final String student_phone, final String student_email, final int student_id){
+        new AsyncTask<Void,Void,Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.studentDAO().updateStudentByID(student_name, student_gender,student_nrc,student_birthday,student_address,student_phone,student_email,student_id);
+                return null;
+            }
+        }.execute();
+    }
+//    ....................Update data  end......................
+
+
+//    ....................Delete data start......................
+
+    public void deleteStudentTask(final int student_id){
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.studentDAO().deleteStudentByID(student_id);
+                return null;
+            }
+        }.execute();
+    }
+//    ....................Delete data task end......................
+//    ======================================= Student END ===============================================
 
 
 

@@ -82,7 +82,6 @@ public class RegisterDetailActivity extends AppCompatActivity {
             course_fees = data.getInt("key_for_course_fees");
             course_duration = data.getInt("key_for_course_duration");
             register_id = data.getInt("register_id");
-
         }
 //        ----------- pass data by intent end----------------
 
@@ -103,7 +102,6 @@ public class RegisterDetailActivity extends AppCompatActivity {
 //        ------------set data to UI end ---------------------------------------
         Buttons();
         new LoadDataTask().execute();
-
     }
 
     public void Buttons(){
@@ -144,7 +142,7 @@ public class RegisterDetailActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(RegisterDetailActivity.this, RegistrationListActivity .class);
                         startActivity(intent);
-                        Toast.makeText(getApplicationContext(),"Updated Course Info!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Updated Register Info!", Toast.LENGTH_LONG).show();
                     }
 
                 }

@@ -15,9 +15,6 @@ public interface TeacherDAO {
     @Insert
     long insertTask(TeacherModel teacherModel);
 
-    @Update
-    void updateTask(TeacherModel teacherModel);
-
     @Delete
     void deleteTask(TeacherModel teacherModel);
 

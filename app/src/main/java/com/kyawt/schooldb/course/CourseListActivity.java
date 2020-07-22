@@ -105,7 +105,6 @@ public class CourseListActivity extends AppCompatActivity {
             super.onPostExecute(aVoid);
             courseAdapter= new CourseAdapter(courseModelArrayList, CourseListActivity.this);
             recyclerView.setAdapter(courseAdapter);
-
         }
 
     }
