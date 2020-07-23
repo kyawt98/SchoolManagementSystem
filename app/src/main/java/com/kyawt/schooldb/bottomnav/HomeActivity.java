@@ -1,17 +1,21 @@
 package com.kyawt.schooldb.bottomnav;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.kyawt.schooldb.MainActivity;
 import com.kyawt.schooldb.R;
 import com.kyawt.schooldb.course.CourseListActivity;
 import com.kyawt.schooldb.parent.ParentListActivity;
@@ -20,12 +24,13 @@ import com.kyawt.schooldb.student.StudentListActivity;
 import com.kyawt.schooldb.subject.SubjectListActivity;
 import com.kyawt.schooldb.teacher.TeacherListActivity;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     CardView card_register, card_student, card_teacher, card_class, card_subject, card_parent;
     Button btn_home, btn_myaccount, btn_setting;
     TextView txt_app_name;
-    String app_name;
+    String app_name="";
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +43,10 @@ public class HomeActivity extends AppCompatActivity {
         card_class = (CardView) findViewById(R.id.cardCourse);
         card_subject = (CardView) findViewById(R.id.cardSubject);
         card_parent = (CardView) findViewById(R.id.cardParent);
-        btn_home = (Button) findViewById(R.id.home);
-        btn_myaccount = (Button) findViewById(R.id.myaccount);
-        btn_setting = (Button) findViewById(R.id.setting);
         txt_app_name = (TextView) findViewById(R.id.txt_app_name);
+
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.navBotton);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
         //        ----------- pass data from start-------------
         Bundle data = getIntent().getExtras();
@@ -58,7 +63,8 @@ public class HomeActivity extends AppCompatActivity {
 //        ------------set data to UI end ---------------------------------------
 
         CardMenus();
-        nav_bottoms();
+
+//        nav_bottoms();
     }
 
     private void CardMenus(){
@@ -126,32 +132,20 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    private void nav_bottoms(){
-        btn_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.home:
                 Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
                 startActivity(intent);
-                finish();
-            }
-        });
+                break;
 
-        btn_myaccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, MyAccountActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        btn_setting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, SettingActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+            case R.id.myaccount:
+                Intent intent2 = new Intent(HomeActivity.this, MyAccountActivity.class);
+                startActivity(intent2);
+                break;
+        }
+        return false;
     }
+
 }

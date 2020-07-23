@@ -29,7 +29,6 @@
         <activity android:name=".subject.SubjectListActivity" />
         <activity android:name=".course.CourseListActivity" />
         <activity android:name=".registration.RegistrationListActivity" />
-        <activity android:name=".bottomnav.SettingActivity" />
         <activity android:name=".bottomnav.MyAccountActivity" />
         <activity android:name=".bottomnav.HomeActivity">
             <intent-filter>
