@@ -7,6 +7,7 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +29,6 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
     CardView card_register, card_student, card_teacher, card_class, card_subject, card_parent;
     Button btn_home, btn_myaccount, btn_setting;
-    TextView txt_app_name;
     String app_name="";
     private BottomNavigationView bottomNavigationView;
 
@@ -43,24 +43,13 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         card_class = (CardView) findViewById(R.id.cardCourse);
         card_subject = (CardView) findViewById(R.id.cardSubject);
         card_parent = (CardView) findViewById(R.id.cardParent);
-        txt_app_name = (TextView) findViewById(R.id.txt_app_name);
+//        txt_app_name = (TextView) findViewById(R.id.txt_app_name);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navBotton);
-//        bottomNavigationView.setOnNavigationItemSelectedListener(this);
-
-        //        ----------- pass data from start-------------
-        Bundle data = getIntent().getExtras();
-        if (data != null){
-            app_name = data.getString("key_for_app_name");
-            Log.d("App name", app_name);
-        }
-//        ----------- pass data end----------------
-
-        //        ------------set data to UI start-------------------------------------
-
-        txt_app_name.setText(app_name+"");
-
-//        ------------set data to UI end ---------------------------------------
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(0);
+        menuItem.setChecked(true);
 
         CardMenus();
 
@@ -136,8 +125,6 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.home:
-                Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
-                startActivity(intent);
                 break;
 
             case R.id.myaccount:
