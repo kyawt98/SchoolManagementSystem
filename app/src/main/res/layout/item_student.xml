@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:id="@+id/ll_item_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/ll_item_layout">
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        app:cardElevation="2dp"
-        app:cardCornerRadius="10dp"
+        android:layout_height="120dp"
         android:layout_marginTop="-5dp"
+        app:cardBackgroundColor="@color/colorAccent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
         app:cardUseCompatPadding="true">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -26,16 +27,16 @@
                 android:id="@+id/btn_title"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:textSize="30sp"
                 android:background="@color/colorPrimaryDark"
-                android:text="A"/>
+                android:text="A"
+                android:textSize="30sp" />
 
             <LinearLayout
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_margin="10dp"
-                android:gravity="top">
+                android:gravity="top"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -48,6 +49,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:text="Kyawt"
+                        android:textColor="@color/cardview_light_background"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -55,7 +57,7 @@
                 <TextView
                     android:id="@+id/txt_stu_ph_item"
                     android:layout_width="wrap_content"
-                    android:layout_height="201dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:text="098776544"
@@ -72,15 +74,15 @@
                     android:id="@+id/img_stu_gender_item"
                     android:layout_width="15dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_female"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_female" />
 
                 <ImageView
                     android:id="@+id/img_call_item"
                     android:layout_width="30dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_phone"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_phone" />
 
             </LinearLayout>
 

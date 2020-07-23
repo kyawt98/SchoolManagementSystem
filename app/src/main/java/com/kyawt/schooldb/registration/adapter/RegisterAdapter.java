@@ -80,7 +80,6 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.Regist
 
         btn_title.setBackgroundColor(Color.rgb(red, green, blue));
 
-        if (registerModelArrayList.get(position).father_ph.length() < 12) {
 
             img_call.setVisibility(View.VISIBLE);
             img_call.setOnClickListener(new View.OnClickListener() {
@@ -106,9 +105,7 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.Regist
 
                 }
             });
-        } else {
-            img_call.setVisibility(View.GONE);
-        }
+
 
         ll_item_layout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -10,7 +10,7 @@
         android:id="@+id/main_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorAccent"
+        android:background="@color/cardview_dark_background"
         tools:context=".bottomnav.HomeActivity">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -22,9 +22,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?android:attr/windowBackground"
+                app:layout_scrollFlags="scroll"
                 app:title="@string/app_name"
-                app:titleTextColor="@color/colorAccent"
-                app:layout_scrollFlags="scroll"/>
+                app:titleTextColor="@color/colorAccent" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.cardview.widget.CardView
@@ -419,7 +419,7 @@
                 android:id="@+id/navBotton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?android:attr/windowBackground"
+                android:background="@color/colorAccent"
                 app:menu="@menu/menu" />
 
         </FrameLayout>
