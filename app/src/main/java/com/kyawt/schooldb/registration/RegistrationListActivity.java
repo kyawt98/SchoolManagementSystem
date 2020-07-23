@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,6 +18,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 import com.kyawt.schooldb.R;
 import com.kyawt.schooldb.bottomnav.HomeActivity;
 import com.kyawt.schooldb.course.CourseListActivity;
@@ -167,6 +174,7 @@ public class RegistrationListActivity extends AppCompatActivity {
         registerAdapter.notifyDataSetChanged();
     }
     //........... Filter end...........................
+
 
     @Override
     protected void onRestart() {

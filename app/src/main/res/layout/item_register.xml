@@ -48,17 +48,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:text="Kyawt"
-                        android:textSize="12sp" />
+                        android:textColor="@color/colorAccent"
+                        android:textSize="13sp" />
 
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/txt_student_ph_item"
+                    android:id="@+id/txt_course_name_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
-                    android:text="098776544"
+                    android:text="Java"
                     android:textSize="12sp" />
 
             </LinearLayout>
@@ -76,12 +77,12 @@
                     android:src="@drawable/addstu" />
 
 
-                <ImageView
-                    android:id="@+id/img_print_item"
-                    android:layout_width="31dp"
-                    android:layout_height="50dp"
+                <Button
+                    android:id="@+id/btn_print_item"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="5dp"
-                    android:src="@drawable/printer"
+                    android:background="@drawable/printer"
                     android:layout_marginLeft="8dp"/>
 
             </LinearLayout>
