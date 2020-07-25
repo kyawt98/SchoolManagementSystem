@@ -13,6 +13,7 @@ import com.kyawt.schooldb.model.RegisterModel;
 import com.kyawt.schooldb.model.StudentModel;
 import com.kyawt.schooldb.model.SubjectModel;
 import com.kyawt.schooldb.model.TeacherModel;
+import com.kyawt.schooldb.model.TimetableModel;
 
 import java.util.List;
 
@@ -164,16 +165,16 @@ public class AppDatabaseUtility {
     }
 //    ....................Delete data task end......................
 //    =================================== Subject END =============================================
-//    =================================== Parent START =============================================
+//    =================================== Timetable START =============================================
     //    ....................Insert task start........................
 
-    public void insertParentTask(final ParentModel parent){
+    public void insertTimetableTask(final TimetableModel timetable){
 
         new AsyncTask<Void, Void, Void>(){
 
             @Override
             protected Void doInBackground(Void... voids) {
-                appDatabase.parentDAO().insertTask(parent);
+                appDatabase.timetableDAO().insertTask(timetable);
 
                 return null;
             }
@@ -181,14 +182,24 @@ public class AppDatabaseUtility {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                Toast.makeText(context,parent.parent_name+" is added.", Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"Timetable for "+timetable.course_name+" is added.", Toast.LENGTH_LONG).show();
             }
         }.execute();
 
     }
 //    ....................Insert task end..........................
 
-//    =================================== Parent END =============================================
+    //    ....................Get data task start......................
+
+    public List<TimetableModel> getTimetable(){
+        List<TimetableModel> timetableModelList= appDatabase.timetableDAO().getTimetable();
+        return timetableModelList;
+    }
+//    ....................Get data task end......................
+
+
+
+//    =================================== Timetable END =============================================
 
 //    =================================== Register START =============================================
     //    ....................Insert task start........................
@@ -207,7 +218,7 @@ public class AppDatabaseUtility {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                Toast.makeText(context,"Registered student "+register.father_name+" is added.", Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"Registered student "+register.student_name+" is added.", Toast.LENGTH_LONG).show();
             }
         }.execute();
 

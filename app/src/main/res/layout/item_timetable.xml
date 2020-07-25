@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_timetable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="8dp"
+        android:layout_marginTop="-10dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/course_label"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorAccent"
+                android:padding="14dp"
+                android:text="Course Name"
+                android:textAlignment="center"
+                android:textStyle="bold|italic"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/ll_day"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:background="#470C0C"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/course_label">
+
+                <TextView
+                    android:id="@+id/txt_mon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="30dp"
+                    android:text="MON"
+                    android:textAlignment="center"
+                    android:textDirection="firstStrong"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_period_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#E33D31"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toRightOf="@id/ll_day"
+                app:layout_constraintTop_toBottomOf="@id/course_label">
+
+                <TextView
+                    android:id="@+id/txt_sub"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Myanmar"
+                    android:textAlignment="center" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt_start_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="10:00AM"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/dash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="-"
+                        android:textSize="10sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/txt_finish_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="1:00PM"
+                        android:textSize="10sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/colorPrimaryDark"
+                app:layout_constraintLeft_toRightOf="@id/ll_period_1"
+                app:layout_constraintTop_toBottomOf="@id/course_label">
+
+                <TextView
+                    android:id="@+id/txt_teacher_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Daw Hla"
+                    android:padding="30dp"/>
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

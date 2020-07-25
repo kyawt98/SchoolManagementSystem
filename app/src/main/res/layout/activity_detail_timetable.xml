@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".timetable.DetailTimetableActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/labelTimetableInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="Timetable Information"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorAccent"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/breakline"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/line"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/labelTimetableInfo" />
+
+            <Spinner
+                android:id="@+id/spinner_day"
+                style="@style/ShapeAppearance.MaterialComponents.SmallComponent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintTop_toBottomOf="@id/breakline" />
+
+            <Spinner
+                android:id="@+id/spinner_course"
+                style="@style/ShapeAppearance.MaterialComponents.SmallComponent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintTop_toBottomOf="@id/spinner_day" />
+
+
+            <EditText
+                android:id="@+id/etStartTime"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:hint="Start Time"
+                android:inputType="time"
+                android:textSize="14sp"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/sp_am_pm"
+                app:layout_constraintTop_toBottomOf="@id/spinner_course" />
+
+            <Spinner
+                android:id="@+id/sp_am_pm"
+                style="@style/ShapeAppearance.MaterialComponents.SmallComponent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:inputType="time"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toRightOf="@id/etStartTime"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinner_course" />
+
+            <EditText
+                android:id="@+id/etEndTime"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:hint="Finish Time"
+                android:inputType="time"
+                android:textSize="14sp"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/sp_Am_Pm"
+                app:layout_constraintTop_toBottomOf="@id/etStartTime" />
+
+            <Spinner
+                android:id="@+id/sp_Am_Pm"
+                style="@style/ShapeAppearance.MaterialComponents.SmallComponent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:inputType="time"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toRightOf="@id/etEndTime"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etStartTime" />
+
+            <Spinner
+                android:id="@+id/spinner_subject"
+                style="@style/ShapeAppearance.MaterialComponents.SmallComponent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintTop_toBottomOf="@id/etEndTime" />
+
+
+            <Spinner
+                android:id="@+id/spinner_teacher"
+                style="@style/ShapeAppearance.MaterialComponents.SmallComponent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintTop_toBottomOf="@id/spinner_subject" />
+
+            <Button
+                android:id="@+id/btnUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/btn_submit_background"
+                android:text="Update"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/btnDelete"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                tools:ignore="MissingConstraints"
+                app:layout_constraintTop_toBottomOf="@id/spinner_teacher" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/btn_delete_background"
+                android:text="Delete"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                tools:ignore="MissingConstraints"
+                app:layout_constraintLeft_toRightOf="@id/btnUpdate"
+                app:layout_constraintRight_toLeftOf="@id/btnCancel"
+                app:layout_constraintTop_toBottomOf="@id/spinner_teacher" />
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/btn_cancel_background"
+                android:text="Cancel"
+                android:textColor="#FFFFFF"
+                android:textAllCaps="true"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toRightOf="@id/btnDelete"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinner_teacher" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</ScrollView>

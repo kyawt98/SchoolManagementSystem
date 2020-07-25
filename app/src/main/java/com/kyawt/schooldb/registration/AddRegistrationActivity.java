@@ -128,8 +128,6 @@ public class AddRegistrationActivity extends AppCompatActivity {
                     RegisterModel registerModel = new RegisterModel(register_date, stu_name, stu_nrc, stu_bd, father_name, father_nrc, father_ph, address,email, course_name, Integer.parseInt(course_fees), Integer.parseInt(course_duration) );
                     appDatabaseUtility.insertRegisterTask(registerModel);
 
-                    ParentModel parentModel = new ParentModel(father_name, father_dob,father_gender, father_ph,father_nrc,father_email,address);
-                    appDatabaseUtility.insertParentTask(parentModel);
 
                     et_register_date.setText("");
                     et_stu_name.setText("");

@@ -258,7 +258,7 @@
             app:cardUseCompatPadding="true"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/cardParent"
+            app:layout_constraintRight_toLeftOf="@id/cardTimetable"
             app:layout_constraintTop_toBottomOf="@id/cardTeacher"
             tools:ignore="MissingConstraints">
 
@@ -303,7 +303,7 @@
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardParent"
+            android:id="@+id/cardTimetable"
             android:layout_width="165dp"
             android:layout_height="160dp"
             android:clickable="true"
@@ -323,14 +323,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/parentImage"
+                    android:id="@+id/TimetableImage"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:clickable="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_parent" />
+                    android:src="@drawable/ic_timetable" />
 
                 <TextView
                     android:layout_width="30dp"
@@ -343,7 +343,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-                    android:text="Parent"
+                    android:text="Timetable"
                     android:textColor="@color/colorAccent"
                     android:textSize="14sp" />
 
@@ -356,59 +356,6 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!--<androidx.cardview.widget.CardView-->
-        <!--    android:id="@+id/card_bottom_nav"-->
-        <!--    android:layout_width="match_parent"-->
-        <!--    android:layout_height="70dp"-->
-        <!--    app:cardCornerRadius="10dp"-->
-        <!--    app:cardUseCompatPadding="true"-->
-        <!--    app:cardElevation="1dp"-->
-        <!--    app:layout_constraintBottom_toBottomOf="parent">-->
-
-        <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="match_parent"-->
-        <!--        android:orientation="horizontal">-->
-        <!--        <Button-->
-        <!--            android:id="@+id/home"-->
-        <!--            android:layout_width="100dp"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            android:text="Home"-->
-        <!--            android:paddingBottom="@dimen/cardview_default_radius"-->
-        <!--            android:background="#00FFFFFF"-->
-        <!--            android:textColor="@color/colorAccent"-->
-        <!--            app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--            app:layout_constraintHorizontal_chainStyle="packed"-->
-        <!--            app:layout_constraintRight_toLeftOf="@id/myaccount"-->
-        <!--            android:layout_gravity="center"/>-->
-
-        <!--        <Button-->
-        <!--            android:id="@+id/myaccount"-->
-        <!--            android:layout_width="100dp"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            android:text="My Account"-->
-        <!--            android:paddingBottom="@dimen/cardview_default_radius"-->
-        <!--            android:background="#00FFFFFF"-->
-        <!--            android:textColor="@color/colorAccent"-->
-        <!--            app:layout_constraintLeft_toRightOf="@id/home"-->
-        <!--            app:layout_constraintRight_toLeftOf="@id/setting"-->
-        <!--            android:layout_gravity="center"/>-->
-
-        <!--        <Button-->
-        <!--            android:id="@+id/setting"-->
-        <!--            android:layout_width="100dp"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            android:text="Setting"-->
-        <!--            android:textColor="@color/colorAccent"-->
-        <!--            app:layout_constraintLeft_toRightOf="@id/myaccount"-->
-        <!--            app:layout_constraintRight_toRightOf="parent"-->
-        <!--            android:paddingBottom="@dimen/cardview_default_radius"-->
-        <!--            android:background="#00FFFFFF"-->
-        <!--            android:layout_gravity="center"/>-->
-
-        <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-        <!--</androidx.cardview.widget.CardView>-->
         <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"

@@ -24,10 +24,11 @@ import com.kyawt.schooldb.registration.RegistrationListActivity;
 import com.kyawt.schooldb.student.StudentListActivity;
 import com.kyawt.schooldb.subject.SubjectListActivity;
 import com.kyawt.schooldb.teacher.TeacherListActivity;
+import com.kyawt.schooldb.timetable.TimetableListActivity;
 
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    CardView card_register, card_student, card_teacher, card_class, card_subject, card_parent;
+    CardView card_register, card_student, card_teacher, card_class, card_subject, card_timetable;
     Button btn_home, btn_myaccount, btn_setting;
     String app_name="";
     private BottomNavigationView bottomNavigationView;
@@ -42,7 +43,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         card_teacher = (CardView) findViewById(R.id.cardTeacher);
         card_class = (CardView) findViewById(R.id.cardCourse);
         card_subject = (CardView) findViewById(R.id.cardSubject);
-        card_parent = (CardView) findViewById(R.id.cardParent);
+        card_timetable = (CardView) findViewById(R.id.cardTimetable);
 //        txt_app_name = (TextView) findViewById(R.id.txt_app_name);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navBotton);
@@ -111,10 +112,10 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
             }
         });
 
-        card_parent.setOnClickListener(new View.OnClickListener() {
+        card_timetable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, ParentListActivity.class);
+                Intent intent = new Intent(HomeActivity.this, TimetableListActivity.class);
                 startActivity(intent);
                 finish();
             }
