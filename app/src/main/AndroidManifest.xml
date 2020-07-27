@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".admin.LoginActivity"></activity>
         <activity android:name=".timetable.DetailTimetableActivity" />
         <activity android:name=".timetable.TimetableListActivity" />
         <activity android:name=".timetable.AddTimetableActivity" />
@@ -33,14 +34,14 @@
         <activity android:name=".course.CourseListActivity" />
         <activity android:name=".registration.RegistrationListActivity" />
         <activity android:name=".bottomnav.MyAccountActivity" />
-        <activity android:name=".bottomnav.HomeActivity">
+        <activity android:name=".bottomnav.HomeActivity"></activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".MainActivity" /> <!-- For printer START -->
+        </activity> <!-- For printer START -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.kyawt.schooldb.fileprovider"

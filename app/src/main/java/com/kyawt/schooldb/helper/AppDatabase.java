@@ -3,7 +3,9 @@ package com.kyawt.schooldb.helper;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
+import com.kyawt.schooldb.admin.dao.AdminDAO;
 import com.kyawt.schooldb.course.dao.CourseDAO;
+import com.kyawt.schooldb.model.AdminModel;
 import com.kyawt.schooldb.model.CourseModel;
 import com.kyawt.schooldb.model.ParentModel;
 import com.kyawt.schooldb.model.RegisterModel;
@@ -18,7 +20,7 @@ import com.kyawt.schooldb.subject.dao.SubjectDAO;
 import com.kyawt.schooldb.teacher.dao.TeacherDAO;
 import com.kyawt.schooldb.timetable.dao.TimetableDAO;
 
-@Database(entities = {CourseModel.class, SubjectModel.class, TimetableModel.class, RegisterModel.class, TeacherModel.class, StudentModel.class}, version = 9, exportSchema = false)
+@Database(entities = {CourseModel.class, SubjectModel.class, TimetableModel.class, RegisterModel.class, TeacherModel.class, StudentModel.class, AdminModel.class}, version = 10, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract CourseDAO courseDAO();
     public abstract SubjectDAO subjectDAO();
@@ -26,4 +28,5 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract RegisterDAO registerDAO();
     public abstract TeacherDAO teacherDAO();
     public abstract StudentDAO studentDAO();
+    public abstract AdminDAO adminDAO();
 }
