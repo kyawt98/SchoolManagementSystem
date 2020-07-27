@@ -50,9 +50,9 @@ public class TimetableAdapter extends RecyclerView.Adapter<TimetableAdapter.Time
         CardView card_timetable = holder.card_timetable;
 
         course_label.setText(timetableModelArrayList.get(position).day+" ");
-        txt_mon.setText(timetableModelArrayList.get(position).course_name+" ");
+        txt_mon.setText(timetableModelArrayList.get(position).course_name.toUpperCase().subSequence(0,3)+" ");
         txt_sub.setText(timetableModelArrayList.get(position).subject_name+" ");
-        txt_start_time.setText(timetableModelArrayList.get(position).start_time+" ");
+        txt_start_time.setText(timetableModelArrayList.get(position).start_time+"");
         txt_finish_time.setText(timetableModelArrayList.get(position).finish_time+" ");
         txt_teacher_name.setText(timetableModelArrayList.get(position).teacher_name+" ");
 

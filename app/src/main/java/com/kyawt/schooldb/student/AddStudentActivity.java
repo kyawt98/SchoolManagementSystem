@@ -76,6 +76,14 @@ public class AddStudentActivity extends AppCompatActivity {
         et_stu_email.setText(email + "");
         et_stu_ph.setText(phone + "");
 
+        if (stu_gender.trim().toLowerCase().equalsIgnoreCase("male")){
+            rdbtn_male.setChecked(true);
+            rdbtn_female.setChecked(false);
+        }else if (stu_gender.trim().toLowerCase().equalsIgnoreCase("female")){
+            rdbtn_female.setChecked(true);
+            rdbtn_male.setChecked(false);
+        }
+
 //        ------------set data to UI end ---------------------------------------
 
         action();
@@ -132,6 +140,8 @@ public class AddStudentActivity extends AppCompatActivity {
                     et_stu_address.setText("");
                     et_stu_ph.setText("");
                     et_stu_email.setText("");
+                    rdbtn_female.setChecked(false);
+                    rdbtn_male.setChecked(false);
 
                 }
             }

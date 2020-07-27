@@ -197,7 +197,33 @@ public class AppDatabaseUtility {
     }
 //    ....................Get data task end......................
 
+    //    ....................Update data task start....................
 
+    public void updateTimetableTask(final String day,final String sub_name,final String start_time,final String finish_time,final String teacher_name,final String course_name,final int timetable_id){
+        new AsyncTask<Void,Void,Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.timetableDAO().updateTimetableByID(day, sub_name, start_time, finish_time, teacher_name, course_name, timetable_id);
+                return null;
+            }
+        }.execute();
+    }
+//    ....................Update data task end......................
+
+    //    ....................Delete data for task start......................
+
+    public void deleteTimetableTask(final int timetable_id){
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.timetableDAO().deleteTimetableByID(timetable_id);
+                return null;
+            }
+        }.execute();
+    }
+//    ....................Delete data task end......................
 
 //    =================================== Timetable END =============================================
 

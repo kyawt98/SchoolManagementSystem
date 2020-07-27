@@ -41,23 +41,11 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <EditText
-        android:id="@+id/et_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginTop="44dp"
-        android:hint="Search by course name"
-        android:padding="10dp"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/card_appName"
-        tools:layout_editor_absoluteX="0dp" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_timetable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/et_search"/>
+        app:layout_constraintTop_toBottomOf="@id/card_appName"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddNewTimetable"

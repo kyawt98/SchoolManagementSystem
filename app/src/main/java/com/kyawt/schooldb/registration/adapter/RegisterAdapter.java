@@ -28,6 +28,7 @@ import com.kyawt.schooldb.R;
 import com.kyawt.schooldb.course.CourseDetailActivity;
 import com.kyawt.schooldb.model.CourseModel;
 import com.kyawt.schooldb.model.RegisterModel;
+import com.kyawt.schooldb.model.StudentModel;
 import com.kyawt.schooldb.parent.ParentListActivity;
 import com.kyawt.schooldb.registration.RegisterDetailActivity;
 import com.kyawt.schooldb.registration.RegistrationListActivity;
@@ -42,6 +43,7 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.Regist
 
     private ArrayList<RegisterModel> registerModelArrayList;
     Context context;
+    int i;
 
     public RegisterAdapter(ArrayList<RegisterModel> registerModelArrayList, Context context) {
         this.context = context;
@@ -63,7 +65,7 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.Regist
         TextView txt_student_name = holder.txt_student_name;
 //        TextView txt_student_ph = holder.txt_student_ph;
         TextView txt_course_name = holder.txt_course_name;
-        ImageView img_call = holder.img_call;
+        final ImageView img_call = holder.img_call;
         LinearLayout ll_item_layout = holder.ll_item_layout;
         Button btn_printer = holder.btn_printer;
 
@@ -81,18 +83,21 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.Regist
         btn_title.setBackgroundColor(Color.rgb(red, green, blue));
 
 
-            img_call.setVisibility(View.VISIBLE);
-            img_call.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String student_name = registerModelArrayList.get(position).student_name;
-                    String student_nrc = registerModelArrayList.get(position).student_nrc;
-                    String student_dob = registerModelArrayList.get(position).student_bd;
-                    String address = registerModelArrayList.get(position).student_address;
-                    String email = registerModelArrayList.get(position).student_email;
-                    String father_ph = registerModelArrayList.get(position).father_ph;
+        img_call.setVisibility(View.VISIBLE);
+        img_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int register_id = registerModelArrayList.get(position).register_id;
+                String student_name = registerModelArrayList.get(position).student_name;
+                String student_nrc = registerModelArrayList.get(position).student_nrc;
+                String student_dob = registerModelArrayList.get(position).student_bd;
+                String address = registerModelArrayList.get(position).student_address;
+                String email = registerModelArrayList.get(position).student_email;
+                String father_ph = registerModelArrayList.get(position).father_ph;
 
-
+                if (i == 1) {
+                    Toast.makeText(context, student_name + " is already added", Toast.LENGTH_SHORT).show();
+                } else if (i == 0){
                     Intent intent = new Intent(context, AddStudentActivity.class);
                     intent.putExtra("key_for_student_name", student_name);
                     intent.putExtra("key_for_student_nrc", student_nrc);
@@ -102,9 +107,10 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.Regist
                     intent.putExtra("key_for_father_ph", father_ph);
 
                     context.startActivity(intent);
-
+                    i++;
                 }
-            });
+            }
+        });
 
 
         ll_item_layout.setOnClickListener(new View.OnClickListener() {

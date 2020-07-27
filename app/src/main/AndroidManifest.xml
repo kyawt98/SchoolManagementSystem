@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".timetable.DetailTimetableActivity"></activity>
+        <activity android:name=".timetable.DetailTimetableActivity" />
         <activity android:name=".timetable.TimetableListActivity" />
         <activity android:name=".timetable.AddTimetableActivity" />
         <activity android:name=".registration.printer.PrinterActivity" />
