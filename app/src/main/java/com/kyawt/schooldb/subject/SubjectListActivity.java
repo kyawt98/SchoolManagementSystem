@@ -32,6 +32,7 @@ public class SubjectListActivity extends AppCompatActivity {
     private  RecyclerView.LayoutManager layoutManager;
     private SubjectAdapter subjectAdapter;
 
+    String admin_email="",admin_password="",admin_username="";
     ArrayList<SubjectModel> subjectModelArrayList;
 
     @Override
@@ -49,6 +50,16 @@ public class SubjectListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        //        ----------- pass data by intent start-------------
+        Bundle data = getIntent().getExtras();
+        if (data != null){
+            admin_email = data.getString("key_for_email");
+            admin_password = data.getString("key_for_password");
+            admin_username = data.getString("key_for_username");
+        }
+
+//        ----------- pass data  by intent end----------------
+
         action();
         new SubjectListActivity.LoadDataTask().execute();
 
@@ -59,6 +70,9 @@ public class SubjectListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SubjectListActivity.this, HomeActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }
@@ -68,6 +82,9 @@ public class SubjectListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SubjectListActivity.this, AddSubjectActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }

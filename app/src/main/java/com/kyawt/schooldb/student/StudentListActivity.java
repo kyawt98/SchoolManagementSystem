@@ -36,11 +36,12 @@ public class StudentListActivity extends AppCompatActivity {
     EditText et_search;
 
     private static RecyclerView.Adapter adapter;
-    private  RecyclerView.LayoutManager layoutManager;
-    private static  RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private static RecyclerView recyclerView;
     private StudentAdapter studentAdapter;
+    String admin_email = "", admin_password = "", admin_username = "";
 
-    ArrayList<StudentModel> studentModelArrayList,studentSearchList;
+    ArrayList<StudentModel> studentModelArrayList, studentSearchList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,7 @@ public class StudentListActivity extends AppCompatActivity {
         fabAddNewStudent = (FloatingActionButton) findViewById(R.id.fabAddNewStudent);
         et_search = (EditText) findViewById(R.id.et_search);
 
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerStudent);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerStudent);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
@@ -82,16 +83,29 @@ public class StudentListActivity extends AppCompatActivity {
 
 //       ----------------search-----------------
 
+        //        ----------- pass data by intent start-------------
+        Bundle data = getIntent().getExtras();
+        if (data != null) {
+            admin_email = data.getString("key_for_email");
+            admin_password = data.getString("key_for_password");
+            admin_username = data.getString("key_for_username");
+        }
+
+//        ----------- pass data  by intent end----------------
+
         action();
         new LoadDataTask().execute();
 
     }
 
-    private void action(){
+    private void action() {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StudentListActivity.this, HomeActivity.class);
+                intent.putExtra("key_for_email", admin_email);
+                intent.putExtra("key_for_password", admin_password);
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }
@@ -101,20 +115,23 @@ public class StudentListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StudentListActivity.this, AddStudentActivity.class);
+                intent.putExtra("key_for_admin_email", admin_email);
+                intent.putExtra("key_for_password", admin_password);
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }
         });
     }
 
-    class LoadDataTask extends AsyncTask<Void,Void,Void> {
+    class LoadDataTask extends AsyncTask<Void, Void, Void> {
 
         AppDatabaseUtility appDatabaseUtility;
         List<StudentModel> studentModelList;
 
         @Override
         protected void onPreExecute() {
-            appDatabaseUtility= new AppDatabaseUtility(getApplicationContext());
+            appDatabaseUtility = new AppDatabaseUtility(getApplicationContext());
             super.onPreExecute();
         }
 
@@ -126,7 +143,7 @@ public class StudentListActivity extends AppCompatActivity {
             studentSearchList = new ArrayList<>();
 
 
-            for (int i=0; i<studentModelList.size(); i++){
+            for (int i = 0; i < studentModelList.size(); i++) {
                 studentModelArrayList.add(studentModelList.get(i));
                 studentSearchList.add(studentModelList.get(i));
             }
@@ -136,7 +153,7 @@ public class StudentListActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-           studentAdapter = new StudentAdapter(studentModelArrayList, StudentListActivity.this);
+            studentAdapter = new StudentAdapter(studentModelArrayList, StudentListActivity.this);
             recyclerView.setAdapter(studentAdapter);
 
         }
@@ -144,20 +161,20 @@ public class StudentListActivity extends AppCompatActivity {
     }
 
     //........... Filter start...........................
-    public void Search(String txtSearch){
+    public void Search(String txtSearch) {
 
         txtSearch = txtSearch.toLowerCase(Locale.getDefault());
-        Log.d("Filter", txtSearch+"");
+        Log.d("Filter", txtSearch + "");
         studentModelArrayList.clear();
-        if (txtSearch.length() == 0){
+        if (txtSearch.length() == 0) {
             studentModelArrayList.addAll(studentSearchList);
             Log.d("Load Data", "All");
-        }else {
+        } else {
             Log.d("Load", "Filtered");
 
-            for (StudentModel studentModel:studentSearchList){
+            for (StudentModel studentModel : studentSearchList) {
                 if (studentModel.student_name.toLowerCase(Locale.getDefault()).contains(txtSearch)
-                        || studentModel.student_email.toLowerCase(Locale.getDefault()).contains(txtSearch)){
+                        || studentModel.student_email.toLowerCase(Locale.getDefault()).contains(txtSearch)) {
                     studentModelArrayList.add(studentModel);
                 }
             }

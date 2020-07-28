@@ -54,7 +54,7 @@ public class DetailTimetableActivity extends AppCompatActivity {
     private ArrayList<TeacherModel> teacherModelArrayList = new ArrayList<>();
     private ArrayList<SubjectModel> subjectModelArrayList = new ArrayList<>();
 
-    String day = "", course_name = "", subject_name = "", teacher_name = "", start_time = "", end_time = "", am_pm="", AM_PM="";
+    String day = "", course_name = "", subject_name = "", teacher_name = "", start_time = "", end_time = "", am_pm="", AM_PM="",admin_email="",admin_password="",admin_username="";
     String day_to_update = "", course_name_to_update = "", subject_name_to_update="", teacher_name_to_update = "", start_time_to_update = "", end_time_to_update = "";
     String day_to_delete = "", course_name_to_delete = "", subject_name_to_delete="", teacher_name_to_delete = "", start_time_to_delete = "", end_time_to_delete = "";
 
@@ -86,6 +86,17 @@ public class DetailTimetableActivity extends AppCompatActivity {
             start_time = data.getString("key_for_start_time");
             end_time = data.getString("key_for_finish_time");
         }
+
+        //        ----------- pass data by intent start-------------
+        Bundle data1 = getIntent().getExtras();
+        if (data1 != null){
+            admin_email = data1.getString("key_for_email");
+            admin_password = data1.getString("key_for_password");
+            admin_username = data1.getString("key_for_username");
+        }
+
+//        ----------- pass data  by intent end----------------
+
 
         if (start_time == null || end_time == null){
             et_start_time.setText("");
@@ -156,6 +167,9 @@ public class DetailTimetableActivity extends AppCompatActivity {
                     appDatabaseUtility.updateTimetableTask(day_to_update,subject_name_to_update,start_time_to_update,end_time_to_update,course_name_to_update,teacher_name_to_update,timetable_id);
 
                     Intent intent = new Intent(DetailTimetableActivity.this, TimetableListActivity.class);
+                    intent.putExtra("key_for_email",admin_email);
+                    intent.putExtra("key_for_password",admin_password );
+                    intent.putExtra("key_for_username", admin_username);
                     startActivity(intent);
                     Toast.makeText(getApplicationContext(),"Updated Timetable Info!", Toast.LENGTH_LONG).show();
                 }
@@ -182,6 +196,9 @@ public class DetailTimetableActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DetailTimetableActivity.this, TimetableListActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
             }
         });

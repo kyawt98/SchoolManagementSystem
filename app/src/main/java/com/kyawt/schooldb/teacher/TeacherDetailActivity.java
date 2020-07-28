@@ -25,7 +25,7 @@ public class TeacherDetailActivity extends AppCompatActivity {
     EditText et_teacher_name, et_teacher_ph, et_teacher_email, et_teacher_dob, et_teacher_address, et_teacher_nrc;
     RadioButton rdbtn_male, rdbtn_female;
     int teacher_id=0;
-    String teacher_name="", teacher_ph="", teacher_email="", teacher_dob="", teacher_address="", teacher_nrc="", teacher_gender="";
+    String teacher_name="", teacher_ph="", teacher_email="", teacher_dob="", teacher_address="", teacher_nrc="", teacher_gender="",admin_email="",admin_password="",admin_username="";
     String teacher_name_to_update="", teacher_ph_to_update="",teacher_email_to_update="",teacher_dob_to_update="",teacher_address_to_update="", teacher_nrc_to_update="",teacher_gender_to_update="";
     String teacher_name_to_delete="", teacher_ph_to_delete="",teacher_email_to_delete="",teacher_dob_to_delete="",teacher_address_to_delete="", teacher_nrc_to_delete="",teacher_gender_to_delete="";
 
@@ -61,6 +61,17 @@ public class TeacherDetailActivity extends AppCompatActivity {
             teacher_gender = data.getString("key_for_teacher_gender");
         }
 //        ----------- pass data from student course by intent end----------------
+
+
+        //        ----------- pass data by intent start-------------
+        Bundle data1 = getIntent().getExtras();
+        if (data1 != null){
+            admin_email = data1.getString("key_for_admin_email");
+            admin_password = data1.getString("key_for_password");
+            admin_username = data1.getString("key_for_username");
+        }
+
+//        ----------- pass data  by intent end----------------
 
         //        ------------set data to UI start-------------------------------------
         et_teacher_name.setText(teacher_name+"");
@@ -111,6 +122,9 @@ public class TeacherDetailActivity extends AppCompatActivity {
                     appDatabaseUtility.updateTeacherTask(teacher_name_to_update,teacher_gender_to_update,teacher_nrc_to_update,teacher_dob_to_update, teacher_address_to_update, teacher_ph_to_update, teacher_email_to_update, teacher_id);
 
                     Intent intent = new Intent(TeacherDetailActivity.this, TeacherListActivity.class);
+                    intent.putExtra("key_for_admin_email",admin_email);
+                    intent.putExtra("key_for_password",admin_password );
+                    intent.putExtra("key_for_username", admin_username);
                     startActivity(intent);
                     Toast.makeText(getApplicationContext(),"Updated Teacher Info!", Toast.LENGTH_LONG).show();
                 }
@@ -143,6 +157,9 @@ public class TeacherDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TeacherDetailActivity.this, TeacherListActivity.class);
+                intent.putExtra("key_for_admin_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
             }
         });

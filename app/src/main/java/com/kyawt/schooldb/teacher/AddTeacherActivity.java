@@ -23,7 +23,7 @@ public class AddTeacherActivity extends AppCompatActivity {
     Button btnSave, btnCancel;
     RadioButton rdbtn_male, rdbtn_female;
 
-    String teacher_id, teacher_name, teacher_gender, teacher_nrc, teacher_dob, teacher_address, teacher_ph, teacher_email;
+    String teacher_id, teacher_name, teacher_gender, teacher_nrc, teacher_dob, teacher_address, teacher_ph, teacher_email, admin_email="",admin_password="",admin_username="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,16 @@ public class AddTeacherActivity extends AppCompatActivity {
         btnSave = (Button) findViewById(R.id.btnAdd);
         btnCancel = (Button) findViewById(R.id.btnCancel);
 
+        //        ----------- pass data by intent start-------------
+        Bundle data = getIntent().getExtras();
+        if (data != null){
+            admin_email = data.getString("key_for_admin_email");
+            admin_password = data.getString("key_for_password");
+            admin_username = data.getString("key_for_username");
+        }
+
+//        ----------- pass data  by intent end----------------
+
         Buttons();
 
     }
@@ -50,6 +60,9 @@ public class AddTeacherActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddTeacherActivity.this, TeacherListActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }

@@ -35,7 +35,7 @@ public class RegisterDetailActivity extends AppCompatActivity {
 
     int register_id=0;
     String course_id;
-    String register_date="", stu_name="", stu_nrc, stu_bd="", father_name="", father_nrc="", father_ph="", address="", email="",course_name="";
+    String register_date="", stu_name="", stu_nrc, stu_bd="", father_name="", father_nrc="", father_ph="", address="", email="",course_name="", admin_email="",admin_password="",admin_username="";
     int course_fees=0, course_duration=0;
     String register_date_to_update="", stu_name_to_update="", stu_nrc_to_update, stu_bd_to_update="", father_name_to_update="", father_nrc_to_update="", father_ph_to_update="", address_to_update="", email_to_update="",course_name_to_update="",course_fees_to_update="", course_duration_to_update="";
     String register_date_to_delete="", stu_name_to_delete="", stu_nrc_to_delete, stu_bd_to_delete="", father_name_to_delete="", father_nrc_to_delete="", father_ph_to_delete="", address_to_delete="", email_to_delete="",course_name_to_delete="",course_fees_to_delete="", course_duration_to_delete="";
@@ -179,6 +179,9 @@ public class RegisterDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RegisterDetailActivity.this, RegistrationListActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
             }
         });

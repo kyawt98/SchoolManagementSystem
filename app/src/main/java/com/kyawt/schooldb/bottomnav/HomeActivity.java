@@ -30,7 +30,8 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
     CardView card_register, card_student, card_teacher, card_class, card_subject, card_timetable;
     Button btn_home, btn_myaccount, btn_setting;
-    String app_name="";
+    String app_name="",admin_email="",admin_password="",admin_username="";
+
     private BottomNavigationView bottomNavigationView;
 
     @Override
@@ -52,6 +53,17 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         MenuItem menuItem = menu.getItem(0);
         menuItem.setChecked(true);
 
+        //        ----------- pass data by intent start-------------
+        Bundle data = getIntent().getExtras();
+        if (data != null){
+            admin_email = data.getString("key_for_email");
+            admin_password = data.getString("key_for_password");
+            admin_username = data.getString("key_for_username");
+        }
+
+//        ----------- pass data  by intent end----------------
+
+
         CardMenus();
 
 //        nav_bottoms();
@@ -62,6 +74,9 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, RegistrationListActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }
@@ -71,6 +86,9 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, CourseListActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }
@@ -80,6 +98,9 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, SubjectListActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }
@@ -89,6 +110,9 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, TeacherListActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }
@@ -98,6 +122,9 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, RegistrationListActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }
@@ -107,6 +134,9 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, StudentListActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }
@@ -116,6 +146,9 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, TimetableListActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }
@@ -130,6 +163,9 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.myaccount:
                 Intent intent2 = new Intent(HomeActivity.this, MyAccountActivity.class);
+                intent2.putExtra("key_for_email",admin_email);
+                intent2.putExtra("key_for_password",admin_password );
+                intent2.putExtra("key_for_username", admin_username);
                 startActivity(intent2);
                 break;
         }

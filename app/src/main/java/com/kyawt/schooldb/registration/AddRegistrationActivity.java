@@ -40,7 +40,7 @@ public class AddRegistrationActivity extends AppCompatActivity {
     Spinner sp_course_name;
 
     String register_id,register_date, stu_name, stu_nrc, stu_bd, father_name, father_nrc, father_ph, address, email,course_name,course_fees, course_duration;
-    String father_dob="", father_email ="";
+    String father_dob="", father_email ="",admin_email="",admin_password="",admin_username="";
     String father_gender="";
 
    ArrayList<String> courseNameList;
@@ -74,6 +74,15 @@ public class AddRegistrationActivity extends AppCompatActivity {
 
         courseNameList = new ArrayList<>();
 
+        //        ----------- pass data by intent start-------------
+        Bundle data = getIntent().getExtras();
+        if (data != null){
+            admin_email = data.getString("key_for_email");
+            admin_password = data.getString("key_for_password");
+            admin_username = data.getString("key_for_username");
+        }
+
+//        ----------- pass data  by intent end----------------
 
         Buttons();
         new LoadDataTask().execute();
@@ -85,6 +94,9 @@ public class AddRegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddRegistrationActivity.this, RegistrationListActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }

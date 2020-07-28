@@ -23,7 +23,7 @@ public class SubjectDetailActivity extends AppCompatActivity {
     Button btn_update, btn_delete, btn_cancel;
     EditText et_sub_code, et_sub_name;
     int sub_code;
-    String sub_name="";
+    String sub_name="",admin_email="",admin_password="",admin_username="";
     String sub_code_to_update="", sub_name_to_update;
     String sub_code_to_delete="", sub_name_to_delete;
 
@@ -45,6 +45,15 @@ public class SubjectDetailActivity extends AppCompatActivity {
             sub_name = data.getString("key_for_sub_name");
         }
 //        ----------- pass data from subject by intent end----------------
+        //        ----------- pass data by intent start-------------
+        Bundle data1 = getIntent().getExtras();
+        if (data1 != null){
+            admin_email = data1.getString("key_for_email");
+            admin_password = data1.getString("key_for_password");
+            admin_username = data1.getString("key_for_username");
+        }
+
+//        ----------- pass data  by intent end----------------
 
         //        ------------set data to UI start-------------------------------------
 
@@ -71,6 +80,9 @@ public class SubjectDetailActivity extends AppCompatActivity {
                     appDatabaseUtility.updateSubjectTask(subjectModel);
 
                     Intent intent = new Intent(SubjectDetailActivity.this, SubjectListActivity.class);
+                    intent.putExtra("key_for_email",admin_email);
+                    intent.putExtra("key_for_password",admin_password );
+                    intent.putExtra("key_for_username", admin_username);
                     startActivity(intent);
                     Toast.makeText(getApplicationContext(),"Updated Subject Info!", Toast.LENGTH_LONG).show();
                 }
@@ -93,6 +105,9 @@ public class SubjectDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SubjectDetailActivity.this, SubjectListActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
             }
         });

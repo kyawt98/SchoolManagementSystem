@@ -30,7 +30,7 @@ public class AddStudentActivity extends AppCompatActivity {
     EditText et_stu_name, et_stu_nrc, et_stu_dob, et_stu_address, et_stu_ph, et_stu_email;
     RadioButton rdbtn_male, rdbtn_female;
 
-    String stu_name = "", stu_nrc = "", stu_bd = "", address = "", email = "", phone = "", stu_gender="";
+    String stu_name = "", stu_nrc = "", stu_bd = "", address = "", email = "", phone = "", stu_gender="",admin_email="",admin_password="",admin_username="";
 
     private AppDatabaseUtility appDatabaseUtility;
     List<RegisterModel> registerModelList;
@@ -67,6 +67,16 @@ public class AddStudentActivity extends AppCompatActivity {
         }
 //        ----------- pass data by intent end----------------
 
+        //        ----------- pass data by intent start-------------
+        Bundle data1 = getIntent().getExtras();
+        if (data1 != null){
+            admin_email = data1.getString("key_for_admin_email");
+            admin_password = data1.getString("key_for_password");
+            admin_username = data1.getString("key_for_username");
+        }
+
+//        ----------- pass data  by intent end----------------
+
         //        ------------set data to UI start-------------------------------------
 
         et_stu_name.setText(stu_name + "");
@@ -86,6 +96,7 @@ public class AddStudentActivity extends AppCompatActivity {
 
 //        ------------set data to UI end ---------------------------------------
 
+
         action();
     }
 
@@ -94,15 +105,11 @@ public class AddStudentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddStudentActivity.this, StudentListActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
-            }
-        });
-
-        btn_save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
 

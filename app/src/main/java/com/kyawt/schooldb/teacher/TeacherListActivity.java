@@ -40,6 +40,7 @@ public class TeacherListActivity extends AppCompatActivity {
     private  RecyclerView.LayoutManager layoutManager;
     private static  RecyclerView recyclerView;
     private TeacherAdapter teacherAdapter;
+    String admin_email="",admin_password="",admin_username="";
 
     ArrayList<TeacherModel> teacherModelArrayList,teacherSearchList;
 
@@ -83,6 +84,16 @@ public class TeacherListActivity extends AppCompatActivity {
 
 //       ----------------search-----------------
 
+        //        ----------- pass data by intent start-------------
+        Bundle data = getIntent().getExtras();
+        if (data != null){
+            admin_email = data.getString("key_for_email");
+            admin_password = data.getString("key_for_password");
+            admin_username = data.getString("key_for_username");
+        }
+
+//        ----------- pass data  by intent end----------------
+
         action();
         new LoadDataTask().execute();
 
@@ -94,6 +105,9 @@ public class TeacherListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TeacherListActivity.this, HomeActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }
@@ -103,6 +117,9 @@ public class TeacherListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TeacherListActivity.this, AddTeacherActivity.class);
+                intent.putExtra("key_for_admin_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }

@@ -33,7 +33,7 @@ public class CourseListActivity extends AppCompatActivity {
     private  RecyclerView.LayoutManager layoutManager;
     private static  RecyclerView recyclerView;
     private CourseAdapter courseAdapter;
-
+    String admin_email="", admin_password="",admin_username="";
     ArrayList<CourseModel> courseModelArrayList;
 
 
@@ -52,6 +52,16 @@ public class CourseListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        //        ----------- pass data by intent start-------------
+        Bundle data = getIntent().getExtras();
+        if (data != null){
+            admin_email = data.getString("key_for_email");
+            admin_password = data.getString("key_for_password");
+            admin_username = data.getString("key_for_username");
+        }
+
+//        ----------- pass data  by intent end----------------
+
         action();
         new LoadDataTask().execute();
 
@@ -62,6 +72,9 @@ public class CourseListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CourseListActivity.this, HomeActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }
@@ -71,6 +84,9 @@ public class CourseListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CourseListActivity.this, AddCourseActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }

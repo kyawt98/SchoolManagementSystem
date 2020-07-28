@@ -22,7 +22,7 @@ public class AddCourseActivity extends AppCompatActivity {
 
     Button btn_cancel, btn_save;
     EditText et_class_code, et_class_name;
-    String class_code, class_name;
+    String class_code, class_name, admin_email, admin_password,admin_username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,16 @@ public class AddCourseActivity extends AppCompatActivity {
         et_class_code = (EditText) findViewById(R.id.etClassCode);
         et_class_name = (EditText) findViewById(R.id.etClassName);
 
+        //        ----------- pass data by intent start-------------
+        Bundle data = getIntent().getExtras();
+        if (data != null){
+            admin_email = data.getString("key_for_email");
+            admin_password = data.getString("key_for_password");
+            admin_username = data.getString("key_for_username");
+        }
+
+//        ----------- pass data  by intent end----------------
+
         Buttons();
     }
 
@@ -42,6 +52,9 @@ public class AddCourseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddCourseActivity.this, CourseListActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }

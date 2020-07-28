@@ -21,7 +21,7 @@ public class CourseDetailActivity extends AppCompatActivity {
     Button btn_update, btn_delete, btn_cancel;
     EditText et_course_code, et_course_name;
     int course_code;
-    String course_name="";
+    String course_name="",admin_email="",admin_password="",admin_username="";
     String course_code_to_update="", course_name_to_update="";
     String course_code_to_delete="", course_name_to_delete="";
 
@@ -92,6 +92,9 @@ public class CourseDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CourseDetailActivity.this, CourseListActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
             }
         });

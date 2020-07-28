@@ -32,7 +32,7 @@ public class AddTimetableActivity extends AppCompatActivity {
     Button btn_save, btn_cancel;
     Spinner sp_day,sp_course_name, sp_sub_name, sp_teacher_name, sp_AM_PM, sp_am_pm;
     EditText et_start_time, et_finish_time;
-    String course_name, start_time, finish_time, sub_name, teacher_name, day, st_time, en_time;
+    String course_name, start_time, finish_time, sub_name, teacher_name, day, st_time, en_time,admin_email="",admin_password="",admin_username="";
     private AppDatabaseUtility appDatabaseUtility;
     List<CourseModel> courseModelList;
     List<TeacherModel> teacherModelList;
@@ -65,6 +65,18 @@ public class AddTimetableActivity extends AppCompatActivity {
         btn_save = (Button) findViewById(R.id.btnAdd);
         sp_AM_PM = (Spinner) findViewById(R.id.sp_Am_Pm);
         sp_am_pm = (Spinner) findViewById(R.id.sp_am_pm);
+
+        //        ----------- pass data by intent start-------------
+        Bundle data = getIntent().getExtras();
+        if (data != null){
+            admin_email = data.getString("key_for_email");
+            admin_password = data.getString("key_for_password");
+            admin_username = data.getString("key_for_username");
+        }
+
+//        ----------- pass data  by intent end----------------
+
+
         daySpinner();
         am_pmSpinner();
         AM_PMSpinner();
@@ -112,6 +124,9 @@ public class AddTimetableActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddTimetableActivity.this, TimetableListActivity.class);
+                intent.putExtra("key_for_email",admin_email);
+                intent.putExtra("key_for_password",admin_password );
+                intent.putExtra("key_for_username", admin_username);
                 startActivity(intent);
                 finish();
             }
