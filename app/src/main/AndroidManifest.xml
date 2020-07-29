@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".admin.LoginActivity"></activity>
+        <activity android:name=".bottomnav.ChangePasswordActivity"></activity>
+        <activity android:name=".bottomnav.MyAccountDetailActivity" />
+        <activity android:name=".admin.LoginActivity" />
         <activity android:name=".timetable.DetailTimetableActivity" />
         <activity android:name=".timetable.TimetableListActivity" />
         <activity android:name=".timetable.AddTimetableActivity" />
@@ -34,7 +36,7 @@
         <activity android:name=".course.CourseListActivity" />
         <activity android:name=".registration.RegistrationListActivity" />
         <activity android:name=".bottomnav.MyAccountActivity" />
-        <activity android:name=".bottomnav.HomeActivity"></activity>
+        <activity android:name=".bottomnav.HomeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

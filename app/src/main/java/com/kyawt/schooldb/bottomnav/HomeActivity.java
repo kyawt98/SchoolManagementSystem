@@ -31,6 +31,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     CardView card_register, card_student, card_teacher, card_class, card_subject, card_timetable;
     Button btn_home, btn_myaccount, btn_setting;
     String app_name="",admin_email="",admin_password="",admin_username="";
+    int admin_id;
 
     private BottomNavigationView bottomNavigationView;
 
@@ -56,6 +57,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         //        ----------- pass data by intent start-------------
         Bundle data = getIntent().getExtras();
         if (data != null){
+            admin_id = data.getInt("key_for_admin_id");
             admin_email = data.getString("key_for_email");
             admin_password = data.getString("key_for_password");
             admin_username = data.getString("key_for_username");
@@ -163,6 +165,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.myaccount:
                 Intent intent2 = new Intent(HomeActivity.this, MyAccountActivity.class);
+                intent2.putExtra("key_for_admin_id", admin_id);
                 intent2.putExtra("key_for_email",admin_email);
                 intent2.putExtra("key_for_password",admin_password );
                 intent2.putExtra("key_for_username", admin_username);

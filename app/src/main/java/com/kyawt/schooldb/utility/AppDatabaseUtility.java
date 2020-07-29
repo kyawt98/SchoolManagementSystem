@@ -152,7 +152,7 @@ public class AppDatabaseUtility {
     }
 //    ....................Update data task end......................
 
-    //    ....................Delete data for course task start......................
+    //    ....................Delete data  task start......................
 
     public void deleteSubjectTask(final SubjectModel subject){
         new AsyncTask<Void, Void, Void>() {
@@ -450,6 +450,47 @@ public class AppDatabaseUtility {
         return adminModelList;
     }
 //    ....................Get data task end......................
+
+    //    ....................Update data task start....................
+
+    public void updateAdminTask(final String user_name, final String email, final String password, final int admin_id){
+        new AsyncTask<Void,Void,Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.adminDAO().updateAdminByID(user_name,email,password,admin_id);
+                return null;
+            }
+        }.execute();
+    }
+//    ....................Update data task end......................
+
+    //    ....................Update data task start....................
+
+    public void updatePassword(final String password, final int admin_id){
+        new AsyncTask<Void,Void,Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.adminDAO().updatePasswordByAdminID(password,admin_id);
+                return null;
+            }
+        }.execute();
+    }
+//    ....................Update data task end......................
+    //    ....................Delete data  task start......................
+
+    public void deleteAdminTask(final int admin_id){
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.adminDAO().deleteAdmin(admin_id);
+                return null;
+            }
+        }.execute();
+    }
+//    ....................Delete data task end......................
 
 //=======================================Admin END ==============================================================
 

@@ -27,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnSignUpLink, btnSignIn;
     String email, password;
     String a_email = "", a_password = "",a_username="";
+    int a_id;
     EditText et_email, et_password;
     ArrayList<AdminModel> adminModelArrayList;
 
@@ -101,10 +102,12 @@ public class LoginActivity extends AppCompatActivity {
                         a_email = adminModelArrayList.get(position).admin_email;
                         a_password = adminModelArrayList.get(position).admin_password;
                         a_username = adminModelArrayList.get(position).admin_user_name;
+                        a_id = adminModelArrayList.get(position).admin_id;
 
                     if ((et_email.getText().toString().trim().equals(a_email) && (et_password.getText().toString().trim().equals(a_password)))) {
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         intent.putExtra("key_for_email",a_email);
+                        intent.putExtra("key_for_admin_id", a_id);
                         intent.putExtra("key_for_password",a_password );
                         intent.putExtra("key_for_username",a_username );
                         startActivity(intent);
