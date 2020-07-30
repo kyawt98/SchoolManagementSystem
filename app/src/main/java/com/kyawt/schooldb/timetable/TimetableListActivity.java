@@ -14,6 +14,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.kyawt.schooldb.R;
@@ -40,6 +41,7 @@ public class TimetableListActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
     private TimetableAdapter timetableAdapter;
+    TextView txt_noData;
     String admin_email="",admin_password="",admin_username="";
 
     ArrayList<TimetableModel> timetableModelArrayList, registerSearchList;
@@ -50,10 +52,11 @@ public class TimetableListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_timetable_list);
         card_back = (CardView) findViewById(R.id.back);
         fabAddNewTimetable = (FloatingActionButton) findViewById(R.id.fabAddNewTimetable);
+        txt_noData = (TextView) findViewById(R.id.noData);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_timetable);
         recyclerView.setHasFixedSize(true);
-
+//        txt_noData.setVisibility(View.GONE);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -125,8 +128,9 @@ public class TimetableListActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            timetableAdapter = new TimetableAdapter(timetableModelArrayList, TimetableListActivity.this);
-            recyclerView.setAdapter(timetableAdapter);
+                timetableAdapter = new TimetableAdapter(timetableModelArrayList, TimetableListActivity.this);
+                recyclerView.setAdapter(timetableAdapter);
+
         }
 
     }
