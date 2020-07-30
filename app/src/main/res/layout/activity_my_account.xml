@@ -15,6 +15,7 @@
         tools:ignore="MissingConstraints">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:attr/windowBackground"
@@ -26,7 +27,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/body"
         android:layout_width="match_parent"
-        android:layout_height="510dp"
+        android:layout_height="500dp"
         app:cardUseCompatPadding="true"
         app:cardElevation="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -71,10 +72,10 @@
 
                     <Button
                         android:id="@+id/btn_edit"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="10dp"
-                        android:background="@drawable/edit"
+                        android:background="@drawable/ic_edit"
                         app:layout_constraintBottom_toTopOf="@id/et_user_name"
                         app:layout_constraintLeft_toRightOf="@id/admin_label"
                         app:layout_constraintRight_toRightOf="parent"
@@ -130,32 +131,20 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-
-            <Button
-                android:id="@+id/btnDelete"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_margin="10dp"
-                android:background="#00DFDEDE"
-                android:text="Delete Account"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="#DF1313"
-                android:textSize="14sp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/card_change_password" />
-
             <Button
                 android:id="@+id/btn_log_out"
                 style="@style/ShapeAppearance.MaterialComponents.SmallComponent"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/ic_exit"
+                android:text="Log out"
+                android:textColor="@color/cardview_light_background"
+                android:background="#00FFFFFF"
+                android:drawableLeft="@drawable/ic_exit"
                 android:textAlignment="textEnd"
                 android:textAllCaps="false"
                 app:layout_constraintLeft_toLeftOf="@id/card_change_password"
-                app:layout_constraintTop_toBottomOf="@id/btnDelete" />
+                app:layout_constraintTop_toBottomOf="@id/card_change_password" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_app_info"
@@ -182,19 +171,30 @@
                         android:textColor="@color/design_default_color_on_secondary"
                         android:textDirection="firstStrongLtr"
                         android:textSize="16sp"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintHorizontal_chainStyle="spread"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toLeftOf="@id/btn_app_edit" />
+                        app:layout_constraintRight_toLeftOf="@id/btn_app_add" />
 
                     <Button
-                        android:id="@+id/btn_app_edit"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:id="@+id/btn_app_add"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="10dp"
-                        android:background="@drawable/edit"
+                        android:background="@drawable/ic_edit"
                         app:layout_constraintLeft_toRightOf="@id/app_label"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+<!--                    <Button-->
+<!--                        android:id="@+id/btn_app_edit"-->
+<!--                        android:layout_width="35dp"-->
+<!--                        android:layout_height="35dp"-->
+<!--                        android:layout_margin="10dp"-->
+<!--                        android:background="@drawable/ic_edit"-->
+<!--                        app:layout_constraintLeft_toRightOf="@id/btn_app_add"-->
+<!--                        app:layout_constraintRight_toRightOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent" />-->
 
                     <TextView
                         android:id="@+id/app_name"
@@ -205,7 +205,7 @@
                         app:layout_constraintHorizontal_chainStyle="spread"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toLeftOf="@id/et_app_name"
-                        app:layout_constraintTop_toBottomOf="@id/btn_app_edit" />
+                        app:layout_constraintTop_toBottomOf="@id/btn_app_add" />
 
                     <EditText
                         android:id="@+id/et_app_name"
@@ -217,7 +217,7 @@
                         android:textSize="14sp"
                         app:layout_constraintLeft_toRightOf="@id/app_name"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/btn_app_edit" />
+                        app:layout_constraintTop_toBottomOf="@id/btn_app_add" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -246,16 +246,17 @@
                         android:textColor="@color/design_default_color_on_secondary"
                         android:textDirection="firstStrongLtr"
                         android:textSize="16sp"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintHorizontal_chainStyle="spread"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toLeftOf="@id/btn_password_edit" />
 
                     <Button
                         android:id="@+id/btn_password_edit"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="10dp"
-                        android:background="@drawable/edit"
+                        android:background="@drawable/ic_edit"
                         app:layout_constraintLeft_toRightOf="@id/password_label"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />

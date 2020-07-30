@@ -8,6 +8,7 @@ import androidx.room.Room;
 
 import com.kyawt.schooldb.helper.AppDatabase;
 import com.kyawt.schooldb.model.AdminModel;
+import com.kyawt.schooldb.model.AppModel;
 import com.kyawt.schooldb.model.CourseModel;
 import com.kyawt.schooldb.model.ParentModel;
 import com.kyawt.schooldb.model.RegisterModel;
@@ -453,12 +454,12 @@ public class AppDatabaseUtility {
 
     //    ....................Update data task start....................
 
-    public void updateAdminTask(final String user_name, final String email, final String password, final int admin_id){
+    public void updateAdminTask(final String user_name, final String email, final int admin_id){
         new AsyncTask<Void,Void,Void>(){
 
             @Override
             protected Void doInBackground(Void... voids) {
-                appDatabase.adminDAO().updateAdminByID(user_name,email,password,admin_id);
+                appDatabase.adminDAO().updateAdminInfoByID(user_name,email,admin_id);
                 return null;
             }
         }.execute();
@@ -494,5 +495,54 @@ public class AppDatabaseUtility {
 
 //=======================================Admin END ==============================================================
 
+//    ============================== APP START =====================================
+
+    //    ....................Insert task start........................
+
+    public void insertAPPTask(final AppModel app){
+
+        new AsyncTask<Void, Void, Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.appDAO().insertTask(app);
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                Toast.makeText(context,app.app_name+"", Toast.LENGTH_LONG).show();
+            }
+        }.execute();
+
+    }
+//    ....................Insert task end..........................
+
+    //    ....................Get data task start......................
+
+    public List<AppModel> getApp(){
+        List<AppModel> appModelList= appDatabase.appDAO().getApp();
+        return appModelList;
+    }
+//    ....................Get data task end......................
+
+    //    ....................Update data task start....................
+
+    public void updateAppNameTask(final String app_name, final int app_id){
+        new AsyncTask<Void,Void,Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.appDAO().updateAppNameByID(app_name,app_id);
+                return null;
+            }
+        }.execute();
+    }
+//    ....................Update data task end......................
+
+
+//    ============================== APP END =======================================
 
 }

@@ -2,9 +2,11 @@ package com.kyawt.schooldb.bottomnav;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,12 +21,19 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kyawt.schooldb.MainActivity;
 import com.kyawt.schooldb.R;
 import com.kyawt.schooldb.course.CourseListActivity;
+import com.kyawt.schooldb.model.AdminModel;
+import com.kyawt.schooldb.model.AppModel;
+import com.kyawt.schooldb.model.StudentModel;
 import com.kyawt.schooldb.parent.ParentListActivity;
 import com.kyawt.schooldb.registration.RegistrationListActivity;
 import com.kyawt.schooldb.student.StudentListActivity;
 import com.kyawt.schooldb.subject.SubjectListActivity;
 import com.kyawt.schooldb.teacher.TeacherListActivity;
 import com.kyawt.schooldb.timetable.TimetableListActivity;
+import com.kyawt.schooldb.utility.AppDatabaseUtility;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -32,6 +41,9 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     Button btn_home, btn_myaccount, btn_setting;
     String app_name="",admin_email="",admin_password="",admin_username="";
     int admin_id;
+    Toolbar toolbar;
+    List<AppModel> appModelList;
+    ArrayList<AppModel> appModelArrayList;
 
     private BottomNavigationView bottomNavigationView;
 
@@ -46,6 +58,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         card_class = (CardView) findViewById(R.id.cardCourse);
         card_subject = (CardView) findViewById(R.id.cardSubject);
         card_timetable = (CardView) findViewById(R.id.cardTimetable);
+        toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);
 //        txt_app_name = (TextView) findViewById(R.id.txt_app_name);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navBotton);
@@ -65,6 +78,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
 //        ----------- pass data  by intent end----------------
 
+        new LoadDataTask().execute();
 
         CardMenus();
 
@@ -173,6 +187,37 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
                 break;
         }
         return false;
+    }
+
+    class LoadDataTask extends AsyncTask<Void, Void, Void> {
+
+        AppDatabaseUtility appDatabaseUtility;
+
+        @Override
+        protected void onPreExecute() {
+            appDatabaseUtility = new AppDatabaseUtility(getApplicationContext());
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            appModelList = appDatabaseUtility.getApp();
+            appModelArrayList = new ArrayList<>();
+
+            for (int i = 0; i < appModelList.size(); i++) {
+                appModelArrayList.add(appModelList.get(i));
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            toolbar.setTitle(appModelArrayList.get(appModelArrayList.size() - 1).app_name);
+        }
+
     }
 
 }

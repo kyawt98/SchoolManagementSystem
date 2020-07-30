@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -81,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
 
             adminModelList = appDatabaseUtility.getAdmin();
+            Log.d("admin",adminModelList.get(0).admin_email.toString());
             adminModelArrayList = new ArrayList<>();
 
             for (int i = 0; i < adminModelList.size(); i++) {

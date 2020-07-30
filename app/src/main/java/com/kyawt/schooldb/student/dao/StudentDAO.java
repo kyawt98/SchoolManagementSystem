@@ -15,7 +15,6 @@ public interface StudentDAO {
     @Insert
     long insertTask(StudentModel student);
 
-
     @Query("UPDATE studentmodel SET Student_name = :student_name, Student_gender = :student_gender, Student_nrc = :student_nrc, Student_dob = :student_dob, Student_address = :student_address, Student_phone = :student_phone, Student_email = :student_email WHERE Student_id = :student_id")
     void updateStudentByID(String student_name, String student_gender, String student_nrc, String student_dob, String student_address, String student_phone, String student_email, int student_id);
 

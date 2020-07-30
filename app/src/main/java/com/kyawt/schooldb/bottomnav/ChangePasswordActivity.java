@@ -3,6 +3,7 @@ package com.kyawt.schooldb.bottomnav;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,13 +18,18 @@ import com.kyawt.schooldb.student.StudentDetailActivity;
 import com.kyawt.schooldb.student.StudentListActivity;
 import com.kyawt.schooldb.utility.AppDatabaseUtility;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChangePasswordActivity extends AppCompatActivity {
     Button btn_update, btn_cancel;
     int admin_id;
     String admin_email="", admin_password="", admin_username="";
     EditText et_current_password, et_new_password, et_retype_password;
-    String current_password="", new_password="", retype_password="";
+    String current_password="", new_password="", retype_password="",password;
     String password_update="";
+    List<AdminModel> adminModelList;
+    ArrayList<AdminModel> adminModelArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         }
 //        ----------- pass data by intent end----------------
         Buttons();
+        new LoadDataTask().execute();
     }
 
     private void Buttons(){
@@ -103,7 +110,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
             return false;
         }
 
-        if (!current_password.equals(admin_password)){
+        if (!current_password.equals(password)){
             et_current_password.setError("Current Password is Wrong!!!");
             return false;
         }
@@ -113,5 +120,36 @@ public class ChangePasswordActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    class LoadDataTask extends AsyncTask<Void, Void, Void> {
+
+        AppDatabaseUtility appDatabaseUtility;
+
+        @Override
+        protected void onPreExecute() {
+            appDatabaseUtility = new AppDatabaseUtility(getApplicationContext());
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            adminModelList = appDatabaseUtility.getAdmin();
+            adminModelArrayList = new ArrayList<>();
+
+            for (int i = 0; i < adminModelList.size(); i++) {
+                adminModelArrayList.add(adminModelList.get(i));
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            password = adminModelArrayList.get(0).admin_password;
+        }
+
     }
 }
